@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edukasi Matematika - Konsep Persamaan Garis Lurus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-color: #f7f9fa;
+      --sidebar-bg: #ffffff;
+      --text-main: #2d3748;
+      --text-muted: #718096;
+      --primary: #20c997;
+      --primary-light: #e6f9f5;
+      --accent-orange: #ff8c42;
+      --accent-orange-light: #fff3eb;
+      --accent-purple: #818cf8;
+      --accent-purple-light: #e0e7ff;
+      --accent-red: #f87171;
+      --accent-red-light: #fee2e2;
+      --card-radius: 16px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar Navigation */
+    .sidebar {
+      width: 250px;
+      background: var(--sidebar-bg);
+      border-right: 1px solid #edf2f7;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      height: 100vh;
+      z-index: 100;
+      padding: 25px 15px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 20px;
+      color: var(--primary);
+      margin-bottom: 30px;
+      padding-left: 10px;
+    }
+
+    .nav-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .nav-item a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 12px;
+      transition: var(--transition);
+    }
+
+    .nav-item a:hover, .nav-item.active a {
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    /* Main Container */
+    .main-wrapper {
+      margin-left: 250px;
+      flex: 1;
+      padding: 40px;
+      max-width: 1100px;
+    }
+
+    /* Header & Hero */
+    .hero-card {
+      background: linear-gradient(135deg, #e6f9f5 0%, #ffffff 100%);
+      border: 1px solid rgba(32, 201, 151, 0.2);
+      border-radius: var(--card-radius);
+      padding: 35px;
+      margin-bottom: 30px;
+    }
+
+    .hero-card h1 {
+      font-family: 'Fredoka', sans-serif;
+      color: #1a202c;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .hero-card p {
+      color: var(--text-muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .author-tag {
+      display: inline-block;
+      margin-top: 15px;
+      background: var(--primary);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* Content Cards */
+    .content-section {
+      background: #ffffff;
+      border-radius: var(--card-radius);
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+
+    .section-title {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 22px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #2d3748;
+    }
+
+    .scenario-box {
+      background: var(--accent-orange-light);
+      border-left: 4px solid var(--accent-orange);
+      padding: 20px;
+      border-radius: 0 12px 12px 0;
+      margin-bottom: 20px;
+    }
+
+    .scenario-box h4 {
+      color: var(--accent-orange);
+      margin-bottom: 8px;
+    }
+
+    /* Table Styling */
+    .custom-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    .custom-table th, .custom-table td {
+      border: 1px solid #e2e8f0;
+      padding: 12px 16px;
+      text-align: left;
+    }
+
+    .custom-table th {
+      background-color: var(--primary-light);
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* Interactive Graph Canvas */
+    .interactive-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .controls-panel {
+      background: #f8fafc;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #edf2f7;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #cbd5e0;
+      border-radius: 8px;
+    }
+
+    canvas {
+      background: #ffffff;
+      border: 2px dashed #cbd5e0;
+      border-radius: 12px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Quiz Section */
+    .quiz-item {
+      background: #f8fafc;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #edf2f7;
+    }
+
+    .quiz-option {
+      background: #ffffff;
+      border: 2px solid #e2e8f0;
+      padding: 10px 16px;
+      border-radius: 8px;
+      margin-top: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 600;
+    }
+
+    .quiz-option:hover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .quiz-option.correct {
+      background: var(--primary-light) !important;
+      border-color: var(--primary) !important;
+      color: var(--primary);
+    }
+
+    .quiz-option.wrong {
+      background: var(--accent-red-light) !important;
+      border-color: var(--accent-red) !important;
+      color: var(--accent-red);
+    }
+
+    .result-box {
+      background: var(--accent-purple-light);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      margin-top: 20px;
+      display: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .sidebar { width: 70px; padding: 20px 10px; }
+      .sidebar .brand span, .nav-item span { display: none; }
+      .main-wrapper { margin-left: 70px; padding: 20px; }
+      .interactive-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="brand">
+      <i class="fa-solid fa-graduation-cap"></i>
+      <span>EDU-MAT</span>
+    </div>
+    <ul class="nav-menu">
+      <li class="nav-item active"><a href="#apersepsi"><i class="fa-solid fa-book-open"></i> <span>Apersepsi</span></a></li>
+      <li class="nav-item"><a href="#konsep"><i class="fa-solid fa-diagram-project"></i> <span>Konsep Dasar</span></a></li>
+      <li class="nav-item"><a href="#grafik"><i class="fa-solid fa-chart-line"></i> <span>Grafik Interaktif</span></a></li>
+      <li class="nav-item"><a href="#kuis"><i class="fa-solid fa-pen-to-square"></i> <span>Uji Pemahaman</span></a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-wrapper">
+    
+    <!-- Hero Banner -->
+    <div class="hero-card">
+      <h1>🎓 EDUKASI PERSAMAAN GARIS LURUS</h1>
+      <p>Pembelajaran Interaktif Konsep Dasar dan Grafik Persamaan Garis Lurus (Matematika Kelas VIII)</p>
+      <span class="author-tag">Modul Pembelajaran SMP</span>
+    </div>
+
+    <!-- Section 1: Apersepsi / Permasalahan Kontekstual -->
+    <div id="apersepsi" class="content-section">
+      <div class="section-title"><i class="fa-solid fa-lightbulb" style="color: var(--accent-orange);"></i> Apersepsi: Pilihan Pekerjaan Mengajar</div>
+      <p>Sebelum mempelajari persamaan garis lurus, mari kita perhatikan masalah kontekstual berikut:</p>
+      
+      <div class="scenario-box">
+        <h4>💼 Kasus Tawaran Mengajar Bimbel vs Privat</h4>
+        <p>Seorang mahasiswa ditawari dua pilihan pekerjaan:</p>
+        <ul style="margin-left: 20px; margin-top: 8px;">
+          <li><strong>Pilihan A (Bimbel):</strong> Gaji tetap per bulan sebesar <strong>Rp 1.000.000,00</strong>[cite: 2].</li>
+          <li><strong>Pilihan B (Privat):</strong> Dibayar <strong>Rp 100.000,00 per pertemuan</strong>[cite: 2]. Dalam 1 minggu setiap siswa diajari 2 kali pertemuan atau lebih[cite: 2].</li>
+        </ul>
+      </div>
+      <p>Pilihan B menunjukkan hubungan linier antara jumlah pertemuan ($x$) dan total penghasilan ($y$), yaitu $y = 100.000x$. Ini adalah salah satu bentuk nyata penerapan **Persamaan Garis Lurus**[cite: 2]!</p>
+    </div>
+
+    <!-- Section 2: Konsep Dasar -->
+    <div id="konsep" class="content-section">
+      <div class="section-title"><i class="fa-solid fa-shapes" style="color: var(--primary);"></i> Konsep Dasar Persamaan Garis Lurus</div>
+      <p>Bentuk umum persamaan garis lurus adalah persamaan dengan dua variabel yang masing-masing variabelnya berpangkat (orde) tertinggi 1[cite: 1].</p>
+      
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Bentuk Persamaan</th>
+            <th>Kategori</th>
+            <th>Keterangan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>$x + 2y = 0$</td>
+            <td><span style="color: var(--primary); font-weight:700;">Persamaan Garis Lurus</span></td>
+            <td>Variabel $x$ dan $y$ berpangkat 1[cite: 1]</td>
+          </tr>
+          <tr>
+            <td>$x^2 + 3y = 7$[cite: 4]</td>
+            <td><span style="color: var(--accent-red); font-weight:700;">Bukan Garis Lurus</span>[cite: 4]</td>
+            <td>Terdapat variabel $x^2$ (pangkat 2)[cite: 4]</td>
+          </tr>
+          <tr>
+            <td>$2y + 3x = 16$[cite: 4]</td>
+            <td><span style="color: var(--primary); font-weight:700;">Persamaan Garis Lurus</span>[cite: 4]</td>
+            <td>Dapat diubah ke bentuk $y = mx + c$[cite: 1]</td>
+          </tr>
+          <tr>
+            <td>$y^2 + x^2 = 25$[cite: 4]</td>
+            <td><span style="color: var(--accent-red); font-weight:700;">Bukan Garis Lurus</span>[cite: 4]</td>
+            <td>Merupakan persamaan lingkaran[cite: 4]</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin-top: 20px; font-family: 'Fredoka';">🔍 Cara Menggambar Grafik:</h3>
+      <p>Untuk menggambar grafik persamaan garis lurus, kita cukup menentukan **dua titik potong** pada bidang Kartesius:</p>
+      <ol style="margin-left: 20px; margin-top: 8px;">
+        <li>Tentukan titik potong sumbu-$x$ (syarat: $y = 0$)[cite: 1].</li>
+        <li>Tentukan titik potong sumbu-$y$ (syarat: $x = 0$)[cite: 1].</li>
+        <li>Hubungkan kedua titik tersebut dengan garis lurus[cite: 1].</li>
+      </ol>
+    </div>
+
+    <!-- Section 3: Grafik Interaktif -->
+    <div id="grafik" class="content-section">
+      <div class="section-title"><i class="fa-solid fa-chart-line" style="color: var(--accent-purple);"></i> Simulation: Grafik Titik Potong Garis</div>
+      <p>Ubah nilai variabel untuk melihat bagaimana grafik memotong sumbu-$x$ dan sumbu-$y$ secara langsung[cite: 2, 3]!</p>
+      
+      <div class="interactive-grid" style="margin-top: 20px;">
+        <div class="controls-panel">
+          <div class="form-group">
+            <label>Persamaan Garis: <span id="eq-display" style="color: var(--primary);">y = 2x + 2</span></label>
+          </div>
+          <div class="form-group">
+            <label>Nilai a (koefisien x): <span id="val-a">2</span></label>
+            <input type="range" id="input-a" min="-5" max="5" value="2" oninput="updateGraph()">
+          </div>
+          <div class="form-group">
+            <label>Nilai c (konstanta): <span id="val-c">2</span></label>
+            <input type="range" id="input-c" min="-5" max="5" value="2" oninput="updateGraph()">
+          </div>
+          <div style="background: #fff; padding: 12px; border-radius: 8px; margin-top: 10px; font-size: 13px;">
+            <strong>Titik Potong:</strong><br>
+            - Sumbu Y: <span id="pt-y">(0, 2)</span><br>
+            - Sumbu X: <span id="pt-x">(-1, 0)</span>
+          </div>
+        </div>
+
+        <div>
+          <canvas id="cartesianCanvas" width="300" height="300"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 4: Uji Pemahaman / Kuis -->
+    <div id="kuis" class="content-section">
+      <div class="section-title"><i class="fa-solid fa-list-check" style="color: var(--accent-red);"></i> 📝 Uji Pemahaman Anda</div>
+      <p>Jawab pertanyaan berikut untuk menguji pemahaman Anda mengenai konsep dasar persamaan garis lurus[cite: 2]!</p>
+
+      <div class="quiz-item">
+        <p><strong>1. Manakah di antara persamaan berikut yang MERUPAKAN persamaan garis lurus?</strong>[cite: 4]</p>
+        <div class="quiz-option" onclick="checkAnswer(this, false, 1)">A. $x^2 + 3y = 7$[cite: 4]</div>
+        <div class="quiz-option" onclick="checkAnswer(this, true, 1)">B. $x + 2y = 0$[cite: 4]</div>
+        <div class="quiz-option" onclick="checkAnswer(this, false, 1)">C. $y^2 + x^2 = 25$[cite: 4]</div>
+      </div>
+
+      <div class="quiz-item">
+        <p><strong>2. Berapa jumlah titik minimal yang dibutuhkan untuk membuat sebuah grafik garis lurus pada bidang Kartesius?</strong>[cite: 3]</p>
+        <div class="quiz-option" onclick="checkAnswer(this, false, 2)">A. 1 Titik[cite: 3]</div>
+        <div class="quiz-option" onclick="checkAnswer(this, true, 2)">B. 2 Titik[cite: 3]</div>
+        <div class="quiz-option" onclick="checkAnswer(this, false, 2)">C. 4 Titik[cite: 3]</div>
+      </div>
+
+      <div class="result-box" id="quiz-result">
+        <h3 style="font-family: 'Fredoka';">🎉 Hasil Uji Pemahaman</h3>
+        <p id="score-text" style="margin-top: 8px; font-weight: 700;"></p>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 Edukasi Matematika • Persamaan Garis Lurus Kelas VIII[cite: 2]</p>
+    </footer>
+
+  </div>
+
+  <script>
+    // Canvas Graph Simulation Logic
+    function updateGraph() {
+      const canvas = document.getElementById('cartesianCanvas');
+      const ctx = canvas.getContext('2d');
+      const width = canvas.width;
+      const height = canvas.height;
+
+      const a = parseInt(document.getElementById('input-a').value);
+      const c = parseInt(document.getElementById('input-c').value);
+
+      document.getElementById('val-a').innerText = a;
+      document.getElementById('val-c').innerText = c;
+      document.getElementById('eq-display').innerText = `y = ${a}x ${c >= 0 ? '+ ' + c : '- ' + Math.abs(c)}`;
+
+      // Calculate Intercepts
+      document.getElementById('pt-y').innerText = `(0, ${c})`;
+      const xIntercept = a !== 0 ? (-c / a).toFixed(1) : "Tidak memotong";
+      document.getElementById('pt-x').innerText = a !== 0 ? `(${xIntercept}, 0)` : "Sejajar Sumbu X";
+
+      // Clear & Draw Grid
+      ctx.clearRect(0, 0, width, height);
+      const scale = 20;
+      const centerX = width / 2;
+      const centerY = height / 2;
+
+      ctx.strokeStyle = '#e2e8f0';
+      ctx.lineWidth = 1;
+      for(let x = 0; x < width; x += scale) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, height); ctx.stroke();
+      }
+      for(let y = 0; y < height; y += scale) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(width, y); ctx.stroke();
+      }
+
+      // Draw Main Axes
+      ctx.strokeStyle = '#4a5568';
+      ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(0, centerY); ctx.lineTo(width, centerY); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(centerX, 0); ctx.lineTo(centerX, height); ctx.stroke();
+
+      // Draw Line: y = ax + c
+      ctx.strokeStyle = '#20c997';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+
+      const x1 = -10, y1 = a * x1 + c;
+      const x2 = 10, y2 = a * x2 + c;
+
+      ctx.moveTo(centerX + x1 * scale, centerY - y1 * scale);
+      ctx.lineTo(centerX + x2 * scale, centerY - y2 * scale);
+      ctx.stroke();
+    }
+
+    // Quiz Checking Logic
+    let scores = { 1: false, 2: false };
+
+    function checkAnswer(element, isCorrect, qNum) {
+      const parent = element.parentElement;
+      const options = parent.querySelectorAll('.quiz-option');
+      options.forEach(opt => opt.classList.remove('correct', 'wrong'));
+
+      if (isCorrect) {
+        element.classList.add('correct');
+        scores[qNum] = true;
+      } else {
+        element.classList.add('wrong');
+        scores[qNum] = false;
+      }
+
+      // Show Total Result
+      const totalCorrect = Object.values(scores).filter(Boolean).length;
+      const resultBox = document.getElementById('quiz-result');
+      resultBox.style.display = 'block';
+      document.getElementById('score-text').innerText = `Skor Anda: ${totalCorrect * 50} / 100 (${totalCorrect} dari 2 soal benar)`;
+    }
+
+    // Initialize Graph on load
+    updateGraph();
+  </script>
+</body>
+</html>

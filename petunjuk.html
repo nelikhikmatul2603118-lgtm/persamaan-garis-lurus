@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Petunjuk Web - Persamaan Garis Lurus</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Fredoka:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --bg-color: #f7f9fa;
+        --primary: #20c997;
+        --primary-light: #e6f9f5;
+        --text-main: #2d3748;
+        --text-muted: #718096;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Quicksand", sans-serif;
+      }
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        display: flex;
+        min-height: 100vh;
+      }
+      .sidebar {
+        width: 250px;
+        background: #fff;
+        border-right: 1px solid #edf2f7;
+        display: flex;
+        flex-direction: column;
+        padding: 25px 15px;
+        position: fixed;
+        height: 100vh;
+      }
+      .brand {
+        font-family: "Fredoka", sans-serif;
+        font-size: 20px;
+        color: var(--primary);
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .nav-menu {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .nav-item a {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        color: var(--text-muted);
+        text-decoration: none;
+        font-weight: 600;
+        border-radius: 12px;
+        transition: 0.3s;
+      }
+      .nav-item.active a,
+      .nav-item a:hover {
+        background: var(--primary-light);
+        color: var(--primary);
+      }
+      .main-wrapper {
+        margin-left: 250px;
+        flex: 1;
+        padding: 40px;
+        max-width: 1000px;
+      }
+      .content-box {
+        background: #fff;
+        border-radius: 16px;
+        padding: 30px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      }
+      h2 {
+        font-family: "Fredoka", sans-serif;
+        color: #1a202c;
+        margin-bottom: 20px;
+        font-size: 24px;
+      }
+      ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      ul li {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        background: #f8fafc;
+        padding: 15px;
+        border-radius: 12px;
+        border: 1px solid #edf2f7;
+        font-weight: 600;
+      }
+      ul li i {
+        color: var(--primary);
+        margin-top: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="brand">
+        <i class="fa-solid fa-graduation-cap"><span>Edukasi PGL</span></i>
+      </div>
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+        </li>
+        <li class="nav-item active">
+          <a href="petunjuk.html"
+            ><i class="fa-solid fa-circle-info"></i> Petunjuk Web</a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="eksplorasi.html"
+            ><i class="fa-solid fa-compass"></i> Eksplorasi</a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="materi.html"><i class="fa-solid fa-book-open"></i> Materi</a>
+        </li>
+        <li class="nav-item">
+          <a href="quiz.html"><i class="fa-solid fa-pen-to-square"></i> Quiz</a>
+        </li>
+      </ul>
+    </div>
+    <div class="main-wrapper">
+      <div class="content-box">
+        <h2>Aturan Belajar & Petunjuk Penggunaan</h2>
+        <ul>
+          <li>
+            <i class="fa-solid fa-check-circle"></i> Kerjakan aktivitas sesuai
+            urutan agar proses penemuan konsep berjalan baik.
+          </li>
+          <li>
+            <i class="fa-solid fa-check-circle"></i> Gunakan kertas atau buku
+            catatan untuk menuliskan tabel dan pasangan koordinat.
+          </li>
+          <li>
+            <i class="fa-solid fa-check-circle"></i> Cobalah menjawab pertanyaan
+            berdasarkan pengamatan sebelum meminta bantuan.
+          </li>
+          <li>
+            <i class="fa-solid fa-check-circle"></i> Diskusikan alasan jawaban
+            dengan teman apabila aktivitas dilakukan berkelompok.
+          </li>
+          <li>
+            <i class="fa-solid fa-check-circle"></i> Kesalahan merupakan bagian
+            dari proses belajar; periksa kembali pola dan perhitunganmu.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

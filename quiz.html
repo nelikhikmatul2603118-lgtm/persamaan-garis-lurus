@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Persamaan Garis Lurus</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Fredoka:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --bg-color: #f7f9fa; --primary: #20c997; --primary-light: #e6f9f5; --text-main: #2d3748; --text-muted: #718096; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Quicksand', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-main); display: flex; min-height: 100vh; }
+        .sidebar { width: 250px; background: #fff; border-right: 1px solid #edf2f7; display: flex; flex-direction: column; padding: 25px 15px; position: fixed; height: 100vh; }
+        .brand { font-family: 'Fredoka', sans-serif; font-size: 20px; color: var(--primary); margin-bottom: 30px; display: flex; align-items: center; gap: 10px; }
+        .nav-menu { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .nav-item a { display: flex; align-items: center; gap: 12px; padding: 12px 16px; color: var(--text-muted); text-decoration: none; font-weight: 600; border-radius: 12px; transition: 0.3s; }
+        .nav-item.active a, .nav-item a:hover { background: var(--primary-light); color: var(--primary); }
+        .main-wrapper { margin-left: 250px; flex: 1; padding: 40px; max-width: 1000px; }
+        .card { background: #fff; border-radius: 16px; padding: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); margin-bottom: 25px; }
+        h2 { font-family: 'Fredoka', sans-serif; color: #1a202c; margin-bottom: 15px; }
+        .question-box { margin-bottom: 20px; padding: 15px; background: #f8fafc; border-radius: 12px; border: 1px solid #edf2f7; }
+        .question-box p { font-weight: 700; margin-bottom: 10px; color: var(--text-main); }
+        .options { display: flex; flex-direction: column; gap: 8px; }
+        .option-btn { background: #fff; border: 2px solid #e2e8f0; padding: 10px 15px; border-radius: 8px; text-align: left; cursor: pointer; font-weight: 600; transition: 0.2s; }
+        .option-btn:hover { border-color: var(--primary); background: var(--primary-light); }
+        .option-btn.correct { background: var(--primary-light) !important; border-color: var(--primary) !important; color: var(--primary); }
+        .option-btn.wrong { background: #fee2e2 !important; border-color: #f87171 !important; color: #f87171; }
+        .result-box { background: #e0e7ff; border-radius: 12px; padding: 20px; text-align: center; margin-top: 20px; display: none; }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="brand"><i class="fa-solid fa-graduation-cap"><span>Edukasi PGL</span></i></div>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="beranda.html"><i class="fa-solid fa-house"></i> Beranda</a></li>
+            <li class="nav-item"><a href="petunjuk.html"><i class="fa-solid fa-circle-info"></i> Petunjuk Web</a></li>
+            <li class="nav-item"><a href="eksplorasi.html"><i class="fa-solid fa-compass"></i> Eksplorasi</a></li>
+            <li class="nav-item"><a href="materi.html"><i class="fa-solid fa-book-open"></i> Materi</a></li>
+            <li class="nav-item active"><a href="quiz.html"><i class="fa-solid fa-pen-to-square"></i> Quiz</a></li>
+        </ul>
+    </div>
+    <div class="main-wrapper">
+        <div class="card">
+            <h2>Uji Pemahaman / Quiz</h2>
+            <p style="margin-bottom: 20px; color: var(--text-muted);">Pilih salah satu jawaban yang paling tepat[cite: 8].</p>
+
+            <div class="question-box" id="q1">
+                <p>1. Pada pasangan berurutan (3, 7), angka 3 menunjukkan …[cite: 8]</p>
+                <div class="options">
+                    <button class="option-btn" onclick="check(1, true, this)">A. koordinat x[cite: 8]</button>
+                    <button class="option-btn" onclick="check(1, false, this)">B. koordinat y[cite: 8]</button>
+                    <button class="option-btn" onclick="check(1, false, this)">C. titik potong[cite: 8]</button>
+                </div>
+            </div>
+
+            <div class="question-box" id="q2">
+                <p>2. Pasangan manakah yang memenuhi persamaan y = 2x + 1?[cite: 8]</p>
+                <div class="options">
+                    <button class="option-btn" onclick="check(2, false, this)">A. (1, 2)[cite: 8]</button>
+                    <button class="option-btn" onclick="check(2, true, this)">B. (2, 5)[cite: 8]</button>
+                    <button class="option-btn" onclick="check(2, false, this)">C. (0, 0)[cite: 8]</button>
+                </div>
+            </div>
+
+            <div class="question-box" id="q3">
+                <p>3. Jika y = 3x dan x = 4, nilai y adalah …[cite: 8]</p>
+                <div class="options">
+                    <button class="option-btn" onclick="check(3, false, this)">A. 8[cite: 8]</button>
+                    <button class="option-btn" onclick="check(3, true, this)">B. 12[cite: 8]</button>
+                    <button class="option-btn" onclick="check(3, false, this)">C. 7[cite: 8]</button>
+                </div>
+            </div>
+
+            <div class="result-box" id="resBox">
+                <h3 style="font-family:'Fredoka'; margin-bottom:5px;">Hasil Quiz</h3>
+                <p id="scoreText" style="font-weight: 700;"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let scores = {1: false, 2: false, 3: false};
+        function check(qNum, isCorrect, btn) {
+            const parent = btn.parentElement;
+            parent.querySelectorAll('.option-btn').forEach(b => b.classList.remove('correct', 'wrong'));
+            if(isCorrect) {
+                btn.classList.add('correct');
+                scores[qNum] = true;
+            } else {
+                btn.classList.add('wrong');
+                scores[qNum] = false;
+            }
+            let correctCount = Object.values(scores).filter(Boolean).length;
+            let box = document.getElementById('resBox');
+            box.style.display = 'block';
+            document.getElementById('scoreText').innerText = `Skor Sementara: ${correctCount * 33.3} / 100`;
+        }
+    </script>
+</body>
+</html>
