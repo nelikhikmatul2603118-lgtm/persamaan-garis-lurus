@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Quiz - Persamaan Garis Lurus</title>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Fredoka:wght@500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Fredoka:wght@500;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -17,55 +20,242 @@
             --text-muted: #718096;
             --card-radius: 16px;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Quicksand', sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-main); display: flex; min-height: 100vh; }
-        
-        .sidebar { width: 250px; background: #fff; border-right: 1px solid #edf2f7; display: flex; flex-direction: column; padding: 25px 15px; position: fixed; height: 100vh; z-index: 100; }
-        .brand { font-family: 'Fredoka', sans-serif; font-size: 20px; color: var(--primary); margin-bottom: 30px; display: flex; align-items: center; gap: 10px; padding-left: 10px; }
-        .nav-menu { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-        .nav-item a { display: flex; align-items: center; gap: 12px; padding: 12px 16px; color: var(--text-muted); text-decoration: none; font-weight: 600; border-radius: 12px; transition: 0.3s; }
-        .nav-item.active a, .nav-item a:hover { background: var(--primary-light); color: var(--primary); }
 
-        .main-wrapper { margin-left: 250px; flex: 1; padding: 40px; max-width: 1050px; }
-        .card { background: #fff; border-radius: var(--card-radius); padding: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); margin-bottom: 25px; border: 1px solid #edf2f7; }
-        h1, h2 { font-family: 'Fredoka', sans-serif; color: #1a202c; margin-bottom: 15px; }
-        p { line-height: 1.6; color: var(--text-muted); font-size: 15px; margin-bottom: 10px; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Quicksand', sans-serif;
+        }
 
-        .instruction-box { background: var(--primary-light); border-left: 4px solid var(--primary); padding: 15px 20px; border-radius: 0 12px 12px 0; margin-bottom: 25px; }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            min-height: 100vh;
+        }
 
-        .question-card { background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 20px; }
-        .question-card p.q-title { font-weight: 700; color: #1a202c; margin-bottom: 12px; }
-        
-        .options-list { display: flex; flex-direction: column; gap: 8px; }
-        .option-btn { background: #ffffff; border: 2px solid #cbd5e0; padding: 12px 16px; border-radius: 8px; text-align: left; font-weight: 600; cursor: pointer; transition: 0.2s; color: var(--text-main); }
-        .option-btn:hover { border-color: var(--primary); background: var(--primary-light); }
-        
-        .option-btn.correct { background: var(--primary-light) !important; border-color: var(--primary) !important; color: var(--primary); }
-        .option-btn.wrong { background: var(--accent-red-light) !important; border-color: var(--accent-red) !important; color: var(--accent-red); }
+        .sidebar {
+            width: 250px;
+            background: #fff;
+            border-right: 1px solid #edf2f7;
+            display: flex;
+            flex-direction: column;
+            padding: 25px 15px;
+            position: fixed;
+            height: 100vh;
+            z-index: 100;
+        }
 
-        .key-box { margin-top: 12px; padding: 10px 14px; background: #fff; border-radius: 6px; border: 1px solid #cbd5e0; font-size: 13px; font-weight: 600; display: none; }
+        .brand {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 20px;
+            color: var(--primary);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-left: 10px;
+        }
 
-        textarea { width: 100%; padding: 12px; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 14px; margin-top: 8px; resize: vertical; min-height: 80px; }
-        .btn-toggle { background: #475569; color: white; border: none; padding: 8px 14px; border-radius: 6px; font-size: 13px; font-weight: 700; cursor: pointer; margin-top: 10px; }
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
 
-        .feedback-banner { background: #e0e7ff; border-radius: 12px; padding: 25px; text-align: center; margin-top: 30px; }
-        
+        .nav-item a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .nav-item.active a,
+        .nav-item a:hover {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .main-wrapper {
+            margin-left: 250px;
+            flex: 1;
+            padding: 40px;
+            max-width: 1050px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: var(--card-radius);
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            margin-bottom: 25px;
+            border: 1px solid #edf2f7;
+        }
+
+        h1,
+        h2 {
+            font-family: 'Fredoka', sans-serif;
+            color: #1a202c;
+            margin-bottom: 15px;
+        }
+
+        p {
+            line-height: 1.6;
+            color: var(--text-muted);
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .instruction-box {
+            background: var(--primary-light);
+            border-left: 4px solid var(--primary);
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin-bottom: 25px;
+        }
+
+        .question-card {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 20px;
+        }
+
+        .question-card p.q-title {
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 12px;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .option-btn {
+            background: #ffffff;
+            border: 2px solid #cbd5e0;
+            padding: 12px 16px;
+            border-radius: 8px;
+            text-align: left;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            color: var(--text-main);
+        }
+
+        .option-btn:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .option-btn.correct {
+            background: var(--primary-light) !important;
+            border-color: var(--primary) !important;
+            color: var(--primary);
+        }
+
+        .option-btn.wrong {
+            background: var(--accent-red-light) !important;
+            border-color: var(--accent-red) !important;
+            color: var(--accent-red);
+        }
+
+        .key-box {
+            margin-top: 12px;
+            padding: 10px 14px;
+            background: #fff;
+            border-radius: 6px;
+            border: 1px solid #cbd5e0;
+            font-size: 13px;
+            font-weight: 600;
+            display: none;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-top: 8px;
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .btn-toggle {
+            background: #475569;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .feedback-banner {
+            background: #e0e7ff;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
         /* Form Identitas & Kirim */
-        .form-input { width: 100%; padding: 12px; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 15px; margin-top: 6px; margin-bottom: 15px; }
-        .btn-submit-sheets { background: var(--primary); color: white; border: none; padding: 14px 28px; border-radius: 10px; font-size: 16px; font-weight: 700; cursor: pointer; transition: 0.3s; width: 100%; }
-        .btn-submit-sheets:hover { opacity: 0.9; }
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+            font-size: 15px;
+            margin-top: 6px;
+            margin-bottom: 15px;
+        }
+
+        .btn-submit-sheets {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        .btn-submit-sheets:hover {
+            opacity: 0.9;
+        }
     </style>
 </head>
+
 <body>
 
     <div class="sidebar">
-        <div class="brand"><i class="fa-solid fa-graduation-cap"></i> <span>Edukasi PGL</span></div>
+        <div class="brand"><i class="fa-solid fa-graduation-cap"></i> <span>PEGASUS</span></div>
         <ul class="nav-menu">
-            <li class="nav-item"><a href="beranda.html"><i class="fa-solid fa-house"></i> <span>Beranda</span></a></li>
-            <li class="nav-item"><a href="petunjuk.html"><i class="fa-solid fa-circle-info"></i> <span>Petunjuk Web</span></a></li>
-            <li class="nav-item"><a href="eksplorasi.html"><i class="fa-solid fa-compass"></i> <span>Eksplorasi</span></a></li>
-            <li class="nav-item"><a href="materi.html"><i class="fa-solid fa-book-open"></i> <span>Materi</span></a></li>
-            <li class="nav-item active"><a href="quiz.html"><i class="fa-solid fa-pen-to-square"></i> <span>Quiz</span></a></li>
+            <li class="nav-item"><a href="index.html"><i class="fa-solid fa-house"></i> <span>Beranda</span></a></li>
+            <li class="nav-item"><a href="petunjuk.html"><i class="fa-solid fa-circle-info"></i> <span>Petunjuk
+                        Web</span></a></li>
+            <li class="nav-item"><a href="eksplorasi.html"><i class="fa-solid fa-compass"></i>
+                    <span>Eksplorasi</span></a></li>
+            <li class="nav-item"><a href="materi.html"><i class="fa-solid fa-book-open"></i> <span>Materi</span></a>
+            </li>
+            <li class="nav-item active"><a href="quiz.html"><i class="fa-solid fa-pen-to-square"></i>
+                    <span>Quiz</span></a></li>
         </ul>
     </div>
 
@@ -73,7 +263,8 @@
         <h1>Isi Halaman Quiz</h1>
 
         <div class="instruction-box">
-            <p style="color: #065f46; margin: 0;"><strong>Petunjuk:</strong> Pilih satu jawaban yang paling tepat untuk soal pilihan ganda. Untuk soal uraian, tuliskan langkah penyelesaian secara ringkas.</p>
+            <p style="color: #065f46; margin: 0;"><strong>Petunjuk:</strong> Pilih satu jawaban yang paling tepat untuk
+                soal pilihan ganda. Untuk soal uraian, tuliskan langkah penyelesaian secara ringkas.</p>
         </div>
 
         <!-- SOAL PILIHAN GANDA -->
@@ -133,9 +324,12 @@
                 <p class="q-title">5. Langkah awal yang tepat untuk menggambar grafik persamaan adalah ….</p>
                 <div class="options-list">
                     <button class="option-btn" onclick="checkMcq(5, 'A', false, this)">A. menghitung gradien</button>
-                    <button class="option-btn" onclick="checkMcq(5, 'B', true, this)">B. memilih nilai x dan menghitung y</button>
-                    <button class="option-btn" onclick="checkMcq(5, 'C', false, this)">C. menghapus sumbu koordinat</button>
-                    <button class="option-btn" onclick="checkMcq(5, 'D', false, this)">D. menentukan luas bidang</button>
+                    <button class="option-btn" onclick="checkMcq(5, 'B', true, this)">B. memilih nilai x dan menghitung
+                        y</button>
+                    <button class="option-btn" onclick="checkMcq(5, 'C', false, this)">C. menghapus sumbu
+                        koordinat</button>
+                    <button class="option-btn" onclick="checkMcq(5, 'D', false, this)">D. menentukan luas
+                        bidang</button>
                 </div>
                 <div class="key-box" id="key-5">Kunci: B. Pilih nilai x, hitung y, lalu susun pasangan berurutan.</div>
             </div>
@@ -146,32 +340,39 @@
             <h2>Soal Uraian</h2>
 
             <div class="question-card">
-                <p class="q-title">6. Lengkapi tabel untuk persamaan y = x + 1 ketika x = -1, 0, 1, dan 2. Tuliskan pasangan berurutannya.</p>
+                <p class="q-title">6. Lengkapi tabel untuk persamaan y = x + 1 ketika x = -1, 0, 1, dan 2. Tuliskan
+                    pasangan berurutannya.</p>
                 <textarea id="essay6" placeholder="Tuliskan jawaban dan perhitunganmu di sini..."></textarea>
-                <button class="btn-toggle" onclick="toggleSolution('essay-6-key')">Lihat Pembahasan</button>
-                <div class="key-box" id="essay-6-key">Kunci jawaban: Untuk x = -1, y = 0 (-1, 0); x = 0, y = 1 (0, 1); x = 1, y = 2 (1, 2); x = 2, y = 3 (2, 3).</div>
+                <!-- <button class="btn-toggle" onclick="toggleSolution('essay-6-key')">Lihat Pembahasan</button>
+                <div class="key-box" id="essay-6-key">Kunci jawaban: Untuk x = -1, y = 0 (-1, 0); x = 0, y = 1 (0, 1); x
+                    = 1, y = 2 (1, 2); x = 2, y = 3 (2, 3).</div> -->
             </div>
 
             <div class="question-card">
                 <p class="q-title">7. Apakah pasangan (2, 7) memenuhi persamaan y = 3x + 1? Tunjukkan perhitunganmu.</p>
                 <textarea id="essay7" placeholder="Tuliskan jawaban dan perhitunganmu di sini..."></textarea>
-                <button class="btn-toggle" onclick="toggleSolution('essay-7-key')">Lihat Pembahasan</button>
-                <div class="key-box" id="essay-7-key">Kunci jawaban: Tidak. Jika x = 2, maka y = 3(2) + 1 = 7. Dengan demikian pasangan (2, 7) justru memenuhi persamaan.</div>
+                <!-- <button class="btn-toggle" onclick="toggleSolution('essay-7-key')">Lihat Pembahasan</button>
+                <div class="key-box" id="essay-7-key">Kunci jawaban: Tidak. Jika x = 2, maka y = 3(2) + 1 = 7. Dengan
+                    demikian pasangan (2, 7) justru memenuhi persamaan.</div> -->
             </div>
 
             <div class="question-card">
                 <p class="q-title">8. Jelaskan langkah-langkah menggambar grafik dari persamaan y = 2x.</p>
                 <textarea id="essay8" placeholder="Tuliskan jawaban dan perhitunganmu di sini..."></textarea>
-                <button class="btn-toggle" onclick="toggleSolution('essay-8-key')">Lihat Pembahasan</button>
-                <div class="key-box" id="essay-8-key">Kunci jawaban: Pilih beberapa nilai x, hitung nilai y dari y = 2x, tuliskan pasangan berurutan, gambar sumbu-x dan sumbu-y, plot titik, lalu hubungkan titik-titik yang segaris.</div>
+                <!-- <button class="btn-toggle" onclick="toggleSolution('essay-8-key')">Lihat Pembahasan</button>
+                <div class="key-box" id="essay-8-key">Kunci jawaban: Pilih beberapa nilai x, hitung nilai y dari y = 2x,
+                    tuliskan pasangan berurutan, gambar sumbu-x dan sumbu-y, plot titik, lalu hubungkan titik-titik yang
+                    segaris.</div> -->
             </div>
         </div>
 
         <!-- UMPAN BALIK HASIL -->
         <div class="feedback-banner">
             <h3 style="margin-bottom: 10px;">Umpan balik hasil quiz</h3>
-            <p id="score-display" style="font-weight: 700; font-size: 18px; color: #1e1b4b;">Skor Pilihan Ganda: 0 / 100</p>
-            <p id="feedback-text" style="font-weight: 600; margin-top: 8px;">Silakan jawab soal pilihan ganda di atas.</p>
+            <p id="score-display" style="font-weight: 700; font-size: 18px; color: #1e1b4b;">Skor Pilihan Ganda: 0 / 100
+            </p>
+            <p id="feedback-text" style="font-weight: 600; margin-top: 8px;">Silakan jawab soal pilihan ganda di atas.
+            </p>
         </div>
 
         <!-- KARTU PENGIRIMAN DATA KE GOOGLE SHEETS -->
@@ -179,28 +380,28 @@
             <h2>Kirim Hasil Ke Google Sheets</h2>
             <label style="font-weight: 700; display: block;">Nama Lengkap Siswa:</label>
             <input type="text" id="studentName" class="form-input" placeholder="Masukkan Nama Lengkap Anda...">
-            
+
             <button class="btn-submit-sheets" onclick="sendToGoogleSheets()">
                 <i class="fa-solid fa-paper-plane"></i> Kirim Jawaban & Skor
             </button>
-            
+
             <p id="send-status" style="margin-top: 15px; font-weight: 700; text-align: center; font-size: 15px;"></p>
         </div>
     </div>
 
     <script>
         // MASUKKAN URL GOOGLE APPS SCRIPT ANDA DI BAWAH INI
-        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby03BcFJw5X-iMlKA3R_X9AuZQ5bz3Si90OlQ_aJXtUxKEiGJBy5vGl_TqH0MkZhBEx9g/exec";
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwiFvjbMdE38NtdTeEPzaWa212nawgqrjqn_m7cz7wZnkivVh5WXDV8Nmg-ssebeg/exec";
 
-        let scores = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0};
-        let userChoices = {1: '-', 2: '-', 3: '-', 4: '-', 5: '-'};
+        let scores = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+        let userChoices = { 1: '-', 2: '-', 3: '-', 4: '-', 5: '-' };
 
         function checkMcq(qNum, optLetter, isCorrect, btn) {
             const parent = btn.parentElement;
             parent.querySelectorAll('.option-btn').forEach(b => b.classList.remove('correct', 'wrong'));
-            
+
             userChoices[qNum] = optLetter;
-            if(isCorrect) {
+            if (isCorrect) {
                 btn.classList.add('correct');
                 scores[qNum] = 20; // 5 soal x 20 = 100
             } else {
@@ -217,9 +418,9 @@
             document.getElementById('score-display').innerText = `Skor Pilihan Ganda: ${total} / 100`;
 
             const feedbackText = document.getElementById('feedback-text');
-            if(total >= 80) {
+            if (total >= 80) {
                 feedbackText.innerHTML = '<span style="color:#059669;">Skor 80–100: Sangat baik! Kamu sudah memahami hubungan persamaan, pasangan berurutan, dan grafik.</span>';
-            } else if(total >= 60) {
+            } else if (total >= 60) {
                 feedbackText.innerHTML = '<span style="color:#d97706;">Skor 60–79: Baik, tetapi pelajari kembali tabel nilai dan penempatan titik.</span>';
             } else {
                 feedbackText.innerHTML = '<span style="color:#dc2626;">Skor di bawah 60: Ayo ulangi Eksplorasi dan Materi, lalu kerjakan quiz kembali.</span>';
@@ -247,7 +448,7 @@
 
             const totalScore = Object.values(scores).reduce((a, b) => a + b, 0);
             const choiceSummary = `S1:${userChoices[1]}, S2:${userChoices[2]}, S3:${userChoices[3]}, S4:${userChoices[4]}, S5:${userChoices[5]}`;
-            
+
             const payload = {
                 nama: nameInput,
                 skorPG: totalScore,
@@ -266,16 +467,17 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             })
-            .then(() => {
-                statusMsg.style.color = "#059669";
-                statusMsg.innerText = "✅ Berhasil! Jawaban & skor Anda telah terkirim ke Google Sheets.";
-            })
-            .catch(err => {
-                statusMsg.style.color = "#dc2626";
-                statusMsg.innerText = "❌ Gagal mengirim data. Pastikan koneksi internet stabil.";
-                console.error("Error:", err);
-            });
+                .then(() => {
+                    statusMsg.style.color = "#059669";
+                    statusMsg.innerText = "✅ Berhasil! Jawaban & skor Anda telah terkirim ke Google Sheets.";
+                })
+                .catch(err => {
+                    statusMsg.style.color = "#dc2626";
+                    statusMsg.innerText = "❌ Gagal mengirim data. Pastikan koneksi internet stabil.";
+                    console.error("Error:", err);
+                });
         }
     </script>
 </body>
+
 </html>

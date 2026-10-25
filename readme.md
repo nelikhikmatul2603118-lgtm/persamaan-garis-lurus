@@ -1,6 +1,6 @@
 code for spreaddsheet
 
-<!-- function doPost(e) {
+function doPost(e) {
   var lock = LockService.getScriptLock();
   lock.tryLock(10000);
 
@@ -38,4 +38,6 @@ code for spreaddsheet
 
 function doGet(e) {
   return ContentService.createTextOutput("Web App Google Apps Script Aktif!");
-} -->
+}
+
+https://script.google.com/macros/s/AKfycbwiFvjbMdE38NtdTeEPzaWa212nawgqrjqn_m7cz7wZnkivVh5WXDV8Nmg-ssebeg/exec
