@@ -1,568 +1,281 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Quiz - Persamaan Garis Lurus</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Fredoka:wght@500;600&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Fredoka:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-      :root {
-        --bg-color: #f7f9fa;
-        --primary: #20c997;
-        --primary-light: #e6f9f5;
-        --accent-red: #f87171;
-        --accent-red-light: #fee2e2;
-        --text-main: #2d3748;
-        --text-muted: #718096;
-        --card-radius: 16px;
-      }
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        font-family: "Quicksand", sans-serif;
-      }
-      body {
-        background-color: var(--bg-color);
-        color: var(--text-main);
-        display: flex;
-        min-height: 100vh;
-      }
+        :root {
+            --bg-color: #f7f9fa;
+            --primary: #20c997;
+            --primary-light: #e6f9f5;
+            --accent-red: #f87171;
+            --accent-red-light: #fee2e2;
+            --text-main: #2d3748;
+            --text-muted: #718096;
+            --card-radius: 16px;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Quicksand', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-main); display: flex; min-height: 100vh; }
+        
+        .sidebar { width: 250px; background: #fff; border-right: 1px solid #edf2f7; display: flex; flex-direction: column; padding: 25px 15px; position: fixed; height: 100vh; z-index: 100; }
+        .brand { font-family: 'Fredoka', sans-serif; font-size: 20px; color: var(--primary); margin-bottom: 30px; display: flex; align-items: center; gap: 10px; padding-left: 10px; }
+        .nav-menu { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .nav-item a { display: flex; align-items: center; gap: 12px; padding: 12px 16px; color: var(--text-muted); text-decoration: none; font-weight: 600; border-radius: 12px; transition: 0.3s; }
+        .nav-item.active a, .nav-item a:hover { background: var(--primary-light); color: var(--primary); }
 
-      .sidebar {
-        width: 250px;
-        background: #fff;
-        border-right: 1px solid #edf2f7;
-        display: flex;
-        flex-direction: column;
-        padding: 25px 15px;
-        position: fixed;
-        height: 100vh;
-        z-index: 100;
-      }
-      .brand {
-        font-family: "Fredoka", sans-serif;
-        font-size: 20px;
-        color: var(--primary);
-        margin-bottom: 30px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding-left: 10px;
-      }
-      .nav-menu {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-      .nav-item a {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 12px 16px;
-        color: var(--text-muted);
-        text-decoration: none;
-        font-weight: 600;
-        border-radius: 12px;
-        transition: 0.3s;
-      }
-      .nav-item.active a,
-      .nav-item a:hover {
-        background: var(--primary-light);
-        color: var(--primary);
-      }
+        .main-wrapper { margin-left: 250px; flex: 1; padding: 40px; max-width: 1050px; }
+        .card { background: #fff; border-radius: var(--card-radius); padding: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); margin-bottom: 25px; border: 1px solid #edf2f7; }
+        h1, h2 { font-family: 'Fredoka', sans-serif; color: #1a202c; margin-bottom: 15px; }
+        p { line-height: 1.6; color: var(--text-muted); font-size: 15px; margin-bottom: 10px; }
 
-      .main-wrapper {
-        margin-left: 250px;
-        flex: 1;
-        padding: 40px;
-        max-width: 1050px;
-      }
-      .card {
-        background: #fff;
-        border-radius: var(--card-radius);
-        padding: 30px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-        margin-bottom: 25px;
-        border: 1px solid #edf2f7;
-      }
-      h1,
-      h2,
-      h3 {
-        font-family: "Fredoka", sans-serif;
-        color: #1a202c;
-        margin-bottom: 15px;
-      }
-      p {
-        line-height: 1.6;
-        color: var(--text-muted);
-        font-size: 15px;
-        margin-bottom: 10px;
-      }
+        .instruction-box { background: var(--primary-light); border-left: 4px solid var(--primary); padding: 15px 20px; border-radius: 0 12px 12px 0; margin-bottom: 25px; }
 
-      .instruction-box {
-        background: var(--primary-light);
-        border-left: 4px solid var(--primary);
-        padding: 15px 20px;
-        border-radius: 0 12px 12px 0;
-        margin-bottom: 25px;
-      }
+        .question-card { background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 20px; }
+        .question-card p.q-title { font-weight: 700; color: #1a202c; margin-bottom: 12px; }
+        
+        .options-list { display: flex; flex-direction: column; gap: 8px; }
+        .option-btn { background: #ffffff; border: 2px solid #cbd5e0; padding: 12px 16px; border-radius: 8px; text-align: left; font-weight: 600; cursor: pointer; transition: 0.2s; color: var(--text-main); }
+        .option-btn:hover { border-color: var(--primary); background: var(--primary-light); }
+        
+        .option-btn.correct { background: var(--primary-light) !important; border-color: var(--primary) !important; color: var(--primary); }
+        .option-btn.wrong { background: var(--accent-red-light) !important; border-color: var(--accent-red) !important; color: var(--accent-red); }
 
-      .question-card {
-        background: #f8fafc;
-        padding: 20px;
-        border-radius: 12px;
-        border: 1px solid #e2e8f0;
-        margin-bottom: 20px;
-      }
-      .question-card p.q-title {
-        font-weight: 700;
-        color: #1a202c;
-        margin-bottom: 12px;
-      }
+        .key-box { margin-top: 12px; padding: 10px 14px; background: #fff; border-radius: 6px; border: 1px solid #cbd5e0; font-size: 13px; font-weight: 600; display: none; }
 
-      .options-list {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-      .option-btn {
-        background: #ffffff;
-        border: 2px solid #cbd5e0;
-        padding: 12px 16px;
-        border-radius: 8px;
-        text-align: left;
-        font-weight: 600;
-        cursor: pointer;
-        transition: 0.2s;
-        color: var(--text-main);
-      }
-      .option-btn:hover {
-        border-color: var(--primary);
-        background: var(--primary-light);
-      }
+        textarea { width: 100%; padding: 12px; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 14px; margin-top: 8px; resize: vertical; min-height: 80px; }
+        .btn-toggle { background: #475569; color: white; border: none; padding: 8px 14px; border-radius: 6px; font-size: 13px; font-weight: 700; cursor: pointer; margin-top: 10px; }
 
-      .option-btn.correct {
-        background: var(--primary-light) !important;
-        border-color: var(--primary) !important;
-        color: var(--primary);
-      }
-      .option-btn.wrong {
-        background: var(--accent-red-light) !important;
-        border-color: var(--accent-red) !important;
-        color: var(--accent-red);
-      }
-
-      .key-box {
-        margin-top: 12px;
-        padding: 10px 14px;
-        background: #fff;
-        border-radius: 6px;
-        border: 1px solid #cbd5e0;
-        font-size: 13px;
-        font-weight: 600;
-        display: none;
-      }
-
-      textarea {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #cbd5e0;
-        border-radius: 8px;
-        font-size: 14px;
-        margin-top: 8px;
-        resize: vertical;
-        min-height: 80px;
-      }
-      .btn-toggle {
-        background: #475569;
-        color: white;
-        border: none;
-        padding: 8px 14px;
-        border-radius: 6px;
-        font-size: 13px;
-        font-weight: 700;
-        cursor: pointer;
-        margin-top: 10px;
-      }
-
-      .feedback-banner {
-        background: #e0e7ff;
-        border-radius: 12px;
-        padding: 25px;
-        text-align: center;
-        margin-top: 30px;
-      }
+        .feedback-banner { background: #e0e7ff; border-radius: 12px; padding: 25px; text-align: center; margin-top: 30px; }
+        
+        /* Form Identitas & Kirim */
+        .form-input { width: 100%; padding: 12px; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 15px; margin-top: 6px; margin-bottom: 15px; }
+        .btn-submit-sheets { background: var(--primary); color: white; border: none; padding: 14px 28px; border-radius: 10px; font-size: 16px; font-weight: 700; cursor: pointer; transition: 0.3s; width: 100%; }
+        .btn-submit-sheets:hover { opacity: 0.9; }
     </style>
-  </head>
-  <body>
+</head>
+<body>
+
     <div class="sidebar">
-      <div class="brand">
-        <i class="fa-solid fa-graduation-cap"></i> <span>Edukasi PGL</span>
-      </div>
-      <ul class="nav-menu">
-        <li class="nav-item">
-          <a href="index.html"
-            ><i class="fa-solid fa-house"></i> <span>Beranda</span></a
-          >
-        </li>
-        <li class="nav-item">
-          <a href="petunjuk.html"
-            ><i class="fa-solid fa-circle-info"></i>
-            <span>Petunjuk Web</span></a
-          >
-        </li>
-        <li class="nav-item">
-          <a href="eksplorasi.html"
-            ><i class="fa-solid fa-compass"></i> <span>Eksplorasi</span></a
-          >
-        </li>
-        <li class="nav-item">
-          <a href="materi.html"
-            ><i class="fa-solid fa-book-open"></i> <span>Materi</span></a
-          >
-        </li>
-        <li class="nav-item active">
-          <a href="quiz.html"
-            ><i class="fa-solid fa-pen-to-square"></i> <span>Quiz</span></a
-          >
-        </li>
-      </ul>
+        <div class="brand"><i class="fa-solid fa-graduation-cap"></i> <span>Edukasi PGL</span></div>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="beranda.html"><i class="fa-solid fa-house"></i> <span>Beranda</span></a></li>
+            <li class="nav-item"><a href="petunjuk.html"><i class="fa-solid fa-circle-info"></i> <span>Petunjuk Web</span></a></li>
+            <li class="nav-item"><a href="eksplorasi.html"><i class="fa-solid fa-compass"></i> <span>Eksplorasi</span></a></li>
+            <li class="nav-item"><a href="materi.html"><i class="fa-solid fa-book-open"></i> <span>Materi</span></a></li>
+            <li class="nav-item active"><a href="quiz.html"><i class="fa-solid fa-pen-to-square"></i> <span>Quiz</span></a></li>
+        </ul>
     </div>
 
     <div class="main-wrapper">
-      <h1>Isi Halaman Quiz</h1>
+        <h1>Isi Halaman Quiz</h1>
 
-      <div class="instruction-box">
-        <p style="color: #065f46; margin: 0">
-          <strong>Petunjuk:</strong> Pilih satu jawaban yang paling tepat untuk
-          soal pilihan ganda. Untuk soal uraian, tuliskan langkah penyelesaian
-          secara ringkas.
-        </p>
-      </div>
-
-      <!-- SOAL PILIHAN GANDA -->
-      <div class="card">
-        <h2>Soal Pilihan Ganda</h2>
-
-        <!-- Soal 1 -->
-        <div class="question-card" id="q1">
-          <p class="q-title">
-            1. Pada pasangan berurutan (3, 7), angka 3 menunjukkan ….
-          </p>
-          <div class="options-list">
-            <button class="option-btn" onclick="checkMcq(1, 'A', true, this)">
-              A. koordinat x
-            </button>
-            <button class="option-btn" onclick="checkMcq(1, 'B', false, this)">
-              B. koordinat y
-            </button>
-            <button class="option-btn" onclick="checkMcq(1, 'C', false, this)">
-              C. titik potong
-            </button>
-            <button class="option-btn" onclick="checkMcq(1, 'D', false, this)">
-              D. nama garis
-            </button>
-          </div>
-          <div class="key-box" id="key-1">
-            Kunci: A. Angka pertama pada pasangan (x, y) adalah koordinat x.
-          </div>
+        <div class="instruction-box">
+            <p style="color: #065f46; margin: 0;"><strong>Petunjuk:</strong> Pilih satu jawaban yang paling tepat untuk soal pilihan ganda. Untuk soal uraian, tuliskan langkah penyelesaian secara ringkas.</p>
         </div>
 
-        <!-- Soal 2 -->
-        <div class="question-card" id="q2">
-          <p class="q-title">
-            2. Pasangan manakah yang memenuhi persamaan y = 2x + 1?
-          </p>
-          <div class="options-list">
-            <button class="option-btn" onclick="checkMcq(2, 'A', false, this)">
-              A. (1, 2)
-            </button>
-            <button class="option-btn" onclick="checkMcq(2, 'B', true, this)">
-              B. (2, 5)
-            </button>
-            <button class="option-btn" onclick="checkMcq(2, 'C', false, this)">
-              C. (3, 5)
-            </button>
-            <button class="option-btn" onclick="checkMcq(2, 'D', false, this)">
-              D. (0, 0)
-            </button>
-          </div>
-          <div class="key-box" id="key-2">
-            Kunci: B. Untuk x = 2, y = 2(2) + 1 = 5, sehingga (2, 5) memenuhi.
-          </div>
+        <!-- SOAL PILIHAN GANDA -->
+        <div class="card">
+            <h2>Soal Pilihan Ganda</h2>
+
+            <!-- Soal 1 -->
+            <div class="question-card">
+                <p class="q-title">1. Pada pasangan berurutan (3, 7), angka 3 menunjukkan ….</p>
+                <div class="options-list">
+                    <button class="option-btn" onclick="checkMcq(1, 'A', true, this)">A. koordinat x</button>
+                    <button class="option-btn" onclick="checkMcq(1, 'B', false, this)">B. koordinat y</button>
+                    <button class="option-btn" onclick="checkMcq(1, 'C', false, this)">C. titik potong</button>
+                    <button class="option-btn" onclick="checkMcq(1, 'D', false, this)">D. nama garis</button>
+                </div>
+                <div class="key-box" id="key-1">Kunci: A. Angka pertama pada pasangan (x, y) adalah koordinat x.</div>
+            </div>
+
+            <!-- Soal 2 -->
+            <div class="question-card">
+                <p class="q-title">2. Pasangan manakah yang memenuhi persamaan y = 2x + 1?</p>
+                <div class="options-list">
+                    <button class="option-btn" onclick="checkMcq(2, 'A', false, this)">A. (1, 2)</button>
+                    <button class="option-btn" onclick="checkMcq(2, 'B', true, this)">B. (2, 5)</button>
+                    <button class="option-btn" onclick="checkMcq(2, 'C', false, this)">C. (3, 5)</button>
+                    <button class="option-btn" onclick="checkMcq(2, 'D', false, this)">D. (0, 0)</button>
+                </div>
+                <div class="key-box" id="key-2">Kunci: B. Untuk x = 2, y = 2(2) + 1 = 5, sehingga (2, 5) memenuhi.</div>
+            </div>
+
+            <!-- Soal 3 -->
+            <div class="question-card">
+                <p class="q-title">3. Jika y = 3x dan x = 4, nilai y adalah ….</p>
+                <div class="options-list">
+                    <button class="option-btn" onclick="checkMcq(3, 'A', false, this)">A. 7</button>
+                    <button class="option-btn" onclick="checkMcq(3, 'B', false, this)">B. 8</button>
+                    <button class="option-btn" onclick="checkMcq(3, 'C', true, this)">C. 12</button>
+                    <button class="option-btn" onclick="checkMcq(3, 'D', false, this)">D. 16</button>
+                </div>
+                <div class="key-box" id="key-3">Kunci: C. Substitusi x = 4 menghasilkan y = 3 × 4 = 12.</div>
+            </div>
+
+            <!-- Soal 4 -->
+            <div class="question-card">
+                <p class="q-title">4. Pasangan berurutan untuk x = 0 pada persamaan y = x + 3 adalah ….</p>
+                <div class="options-list">
+                    <button class="option-btn" onclick="checkMcq(4, 'A', false, this)">A. (0, 0)</button>
+                    <button class="option-btn" onclick="checkMcq(4, 'B', true, this)">B. (0, 3)</button>
+                    <button class="option-btn" onclick="checkMcq(4, 'C', false, this)">C. (3, 0)</button>
+                    <button class="option-btn" onclick="checkMcq(4, 'D', false, this)">D. (1, 3)</button>
+                </div>
+                <div class="key-box" id="key-4">Kunci: B. Jika x = 0, maka y = 0 + 3 = 3.</div>
+            </div>
+
+            <!-- Soal 5 -->
+            <div class="question-card">
+                <p class="q-title">5. Langkah awal yang tepat untuk menggambar grafik persamaan adalah ….</p>
+                <div class="options-list">
+                    <button class="option-btn" onclick="checkMcq(5, 'A', false, this)">A. menghitung gradien</button>
+                    <button class="option-btn" onclick="checkMcq(5, 'B', true, this)">B. memilih nilai x dan menghitung y</button>
+                    <button class="option-btn" onclick="checkMcq(5, 'C', false, this)">C. menghapus sumbu koordinat</button>
+                    <button class="option-btn" onclick="checkMcq(5, 'D', false, this)">D. menentukan luas bidang</button>
+                </div>
+                <div class="key-box" id="key-5">Kunci: B. Pilih nilai x, hitung y, lalu susun pasangan berurutan.</div>
+            </div>
         </div>
 
-        <!-- Soal 3 -->
-        <div class="question-card" id="q3">
-          <p class="q-title">3. Jika y = 3x dan x = 4, nilai y adalah ….</p>
-          <div class="options-list">
-            <button class="option-btn" onclick="checkMcq(3, 'A', false, this)">
-              A. 7
-            </button>
-            <button class="option-btn" onclick="checkMcq(3, 'B', false, this)">
-              B. 8
-            </button>
-            <button class="option-btn" onclick="checkMcq(3, 'C', true, this)">
-              C. 12
-            </button>
-            <button class="option-btn" onclick="checkMcq(3, 'D', false, this)">
-              D. 16
-            </button>
-          </div>
-          <div class="key-box" id="key-3">
-            Kunci: C. Substitusi x = 4 menghasilkan y = 3 × 4 = 12.
-          </div>
+        <!-- SOAL URAIAN -->
+        <div class="card">
+            <h2>Soal Uraian</h2>
+
+            <div class="question-card">
+                <p class="q-title">6. Lengkapi tabel untuk persamaan y = x + 1 ketika x = -1, 0, 1, dan 2. Tuliskan pasangan berurutannya.</p>
+                <textarea id="essay6" placeholder="Tuliskan jawaban dan perhitunganmu di sini..."></textarea>
+                <button class="btn-toggle" onclick="toggleSolution('essay-6-key')">Lihat Pembahasan</button>
+                <div class="key-box" id="essay-6-key">Kunci jawaban: Untuk x = -1, y = 0 (-1, 0); x = 0, y = 1 (0, 1); x = 1, y = 2 (1, 2); x = 2, y = 3 (2, 3).</div>
+            </div>
+
+            <div class="question-card">
+                <p class="q-title">7. Apakah pasangan (2, 7) memenuhi persamaan y = 3x + 1? Tunjukkan perhitunganmu.</p>
+                <textarea id="essay7" placeholder="Tuliskan jawaban dan perhitunganmu di sini..."></textarea>
+                <button class="btn-toggle" onclick="toggleSolution('essay-7-key')">Lihat Pembahasan</button>
+                <div class="key-box" id="essay-7-key">Kunci jawaban: Tidak. Jika x = 2, maka y = 3(2) + 1 = 7. Dengan demikian pasangan (2, 7) justru memenuhi persamaan.</div>
+            </div>
+
+            <div class="question-card">
+                <p class="q-title">8. Jelaskan langkah-langkah menggambar grafik dari persamaan y = 2x.</p>
+                <textarea id="essay8" placeholder="Tuliskan jawaban dan perhitunganmu di sini..."></textarea>
+                <button class="btn-toggle" onclick="toggleSolution('essay-8-key')">Lihat Pembahasan</button>
+                <div class="key-box" id="essay-8-key">Kunci jawaban: Pilih beberapa nilai x, hitung nilai y dari y = 2x, tuliskan pasangan berurutan, gambar sumbu-x dan sumbu-y, plot titik, lalu hubungkan titik-titik yang segaris.</div>
+            </div>
         </div>
 
-        <!-- Soal 4 -->
-        <div class="question-card" id="q4">
-          <p class="q-title">
-            4. Pasangan berurutan untuk x = 0 pada persamaan y = x + 3 adalah ….
-          </p>
-          <div class="options-list">
-            <button class="option-btn" onclick="checkMcq(4, 'A', false, this)">
-              A. (0, 0)
-            </button>
-            <button class="option-btn" onclick="checkMcq(4, 'B', true, this)">
-              B. (0, 3)
-            </button>
-            <button class="option-btn" onclick="checkMcq(4, 'C', false, this)">
-              C. (3, 0)
-            </button>
-            <button class="option-btn" onclick="checkMcq(4, 'D', false, this)">
-              D. (1, 3)
-            </button>
-          </div>
-          <div class="key-box" id="key-4">
-            Kunci: B. Jika x = 0, maka y = 0 + 3 = 3.
-          </div>
+        <!-- UMPAN BALIK HASIL -->
+        <div class="feedback-banner">
+            <h3 style="margin-bottom: 10px;">Umpan balik hasil quiz</h3>
+            <p id="score-display" style="font-weight: 700; font-size: 18px; color: #1e1b4b;">Skor Pilihan Ganda: 0 / 100</p>
+            <p id="feedback-text" style="font-weight: 600; margin-top: 8px;">Silakan jawab soal pilihan ganda di atas.</p>
         </div>
 
-        <!-- Soal 5 -->
-        <div class="question-card" id="q5">
-          <p class="q-title">
-            5. Langkah awal yang tepat untuk menggambar grafik persamaan adalah
-            ….
-          </p>
-          <div class="options-list">
-            <button class="option-btn" onclick="checkMcq(5, 'A', false, this)">
-              A. menghitung gradien
+        <!-- KARTU PENGIRIMAN DATA KE GOOGLE SHEETS -->
+        <div class="card" style="margin-top: 25px;">
+            <h2>Kirim Hasil Ke Google Sheets</h2>
+            <label style="font-weight: 700; display: block;">Nama Lengkap Siswa:</label>
+            <input type="text" id="studentName" class="form-input" placeholder="Masukkan Nama Lengkap Anda...">
+            
+            <button class="btn-submit-sheets" onclick="sendToGoogleSheets()">
+                <i class="fa-solid fa-paper-plane"></i> Kirim Jawaban & Skor
             </button>
-            <button class="option-btn" onclick="checkMcq(5, 'B', true, this)">
-              B. memilih nilai x dan menghitung y
-            </button>
-            <button class="option-btn" onclick="checkMcq(5, 'C', false, this)">
-              C. menghapus sumbu koordinat
-            </button>
-            <button class="option-btn" onclick="checkMcq(5, 'D', false, this)">
-              D. menentukan luas bidang
-            </button>
-          </div>
-          <div class="key-box" id="key-5">
-            Kunci: B. Pilih nilai x, hitung y, lalu susun pasangan berurutan.
-          </div>
+            
+            <p id="send-status" style="margin-top: 15px; font-weight: 700; text-align: center; font-size: 15px;"></p>
         </div>
-      </div>
-
-      <!-- SOAL URAIAN -->
-      <div class="card">
-        <h2>Soal Uraian</h2>
-
-        <!-- Soal 6 -->
-        <div class="question-card">
-          <p class="q-title">
-            6. Lengkapi tabel untuk persamaan y = x + 1 ketika x = -1, 0, 1, dan
-            2. Tuliskan pasangan berurutannya.
-          </p>
-          <textarea
-            placeholder="Tuliskan jawaban dan perhitunganmu di sini..."
-          ></textarea>
-          <button class="btn-toggle" onclick="toggleSolution('essay-6')">
-            Lihat Pembahasan
-          </button>
-          <div class="key-box" id="essay-6">
-            Kunci jawaban uraian: Untuk x = -1, y = 0 sehingga (-1, 0); x = 0, y
-            = 1 sehingga (0, 1); x = 1, y = 2 sehingga (1, 2); x = 2, y = 3
-            sehingga (2, 3).
-          </div>
-        </div>
-
-        <!-- Soal 7 -->
-        <div class="question-card">
-          <p class="q-title">
-            7. Apakah pasangan (2, 7) memenuhi persamaan y = 3x + 1? Tunjukkan
-            perhitunganmu.
-          </p>
-          <textarea
-            placeholder="Tuliskan jawaban dan perhitunganmu di sini..."
-          ></textarea>
-          <button class="btn-toggle" onclick="toggleSolution('essay-7')">
-            Lihat Pembahasan
-          </button>
-          <div class="key-box" id="essay-7">
-            Kunci jawaban uraian: Tidak. Jika x = 2, maka y = 3(2) + 1 = 7.
-            Dengan demikian pasangan (2, 7) justru memenuhi persamaan.
-            Perhatikan bahwa pernyataan jawaban harus berdasarkan substitusi.
-          </div>
-        </div>
-
-        <!-- Soal 8 -->
-        <div class="question-card">
-          <p class="q-title">
-            8. Jelaskan langkah-langkah menggambar grafik dari persamaan y = 2x.
-          </p>
-          <textarea
-            placeholder="Tuliskan jawaban dan perhitunganmu di sini..."
-          ></textarea>
-          <button class="btn-toggle" onclick="toggleSolution('essay-8')">
-            Lihat Pembahasan
-          </button>
-          <div class="key-box" id="essay-8">
-            Kunci jawaban uraian: Pilih beberapa nilai x, hitung nilai y dari y
-            = 2x, tuliskan pasangan berurutan, gambar sumbu-x dan sumbu-y, plot
-            titik, lalu hubungkan titik-titik yang segaris.
-          </div>
-        </div>
-      </div>
-
-      <!-- UMPAN BALIK HASIL QUIZ -->
-      <div class="feedback-banner">
-        <h3 style="margin-bottom: 10px">Umpan balik hasil quiz</h3>
-        <p
-          id="score-display"
-          style="font-weight: 700; font-size: 18px; color: #1e1b4b"
-        >
-          Skor Anda: 0 / 100
-        </p>
-        <p id="feedback-text" style="font-weight: 600; margin-top: 8px">
-          Silakan jawab soal pilihan ganda di atas untuk melihat umpan balik
-          hasil belajar Anda.
-        </p>
-      </div>
-
-      <!-- Tambahkan Input Nama & Tombol Submit di bagian bawah quiz.html -->
-<div class="card" style="margin-top: 20px;">
-    <h2>Pengiriman Hasil Quiz</h2>
-    <div style="margin-bottom: 15px;">
-        <label style="font-weight: 700; display: block; margin-bottom: 5px;">Nama Lengkap Siswa:</label>
-        <input type="text" id="nama-siswa" placeholder="Masukkan nama kamu..." style="width: 100%; padding: 10px; border: 1px solid #cbd5e0; border-radius: 8px;">
-    </div>
-    
-    <button onclick="kirimKeGoogleSheets()" style="background: #20c997; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 700; cursor: pointer;">
-        🚀 Kirim Jawaban ke Google Sheets
-    </button>
-    <p id="status-kirim" style="margin-top: 10px; font-weight: 700;"></p>
-</div>
     </div>
 
     <script>
-      let scores = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+        // MASUKKAN URL GOOGLE APPS SCRIPT ANDA DI BAWAH INI
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby03BcFJw5X-iMlKA3R_X9AuZQ5bz3Si90OlQ_aJXtUxKEiGJBy5vGl_TqH0MkZhBEx9g/exec";
 
-      function checkMcq(qNum, optLetter, isCorrect, btn) {
-        const parent = btn.parentElement;
-        parent
-          .querySelectorAll(".option-btn")
-          .forEach((b) => b.classList.remove("correct", "wrong"));
+        let scores = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0};
+        let userChoices = {1: '-', 2: '-', 3: '-', 4: '-', 5: '-'};
 
-        if (isCorrect) {
-          btn.classList.add("correct");
-          scores[qNum] = 20; // 5 soal x 20 = 100
-        } else {
-          btn.classList.add("wrong");
-          scores[qNum] = 0;
+        function checkMcq(qNum, optLetter, isCorrect, btn) {
+            const parent = btn.parentElement;
+            parent.querySelectorAll('.option-btn').forEach(b => b.classList.remove('correct', 'wrong'));
+            
+            userChoices[qNum] = optLetter;
+            if(isCorrect) {
+                btn.classList.add('correct');
+                scores[qNum] = 20; // 5 soal x 20 = 100
+            } else {
+                btn.classList.add('wrong');
+                scores[qNum] = 0;
+            }
+
+            document.getElementById(`key-${qNum}`).style.display = 'block';
+            updateFeedback();
         }
 
-        document.getElementById(`key-${qNum}`).style.display = "block";
-        updateFeedback();
-      }
+        function updateFeedback() {
+            let total = Object.values(scores).reduce((a, b) => a + b, 0);
+            document.getElementById('score-display').innerText = `Skor Pilihan Ganda: ${total} / 100`;
 
-      function updateFeedback() {
-        let total = Object.values(scores).reduce((a, b) => a + b, 0);
-        const scoreDisplay = document.getElementById("score-display");
-        const feedbackText = document.getElementById("feedback-text");
-
-        scoreDisplay.innerText = `Skor Anda: ${total} / 100`;
-
-        if (total >= 80) {
-          feedbackText.innerHTML =
-            '<span style="color:#059669;">Skor 80–100: Sangat baik! Kamu sudah memahami hubungan persamaan, pasangan berurutan, dan grafik.</span>';
-        } else if (total >= 60) {
-          feedbackText.innerHTML =
-            '<span style="color:#d97706;">Skor 60–79: Baik, tetapi pelajari kembali tabel nilai dan penempatan titik.</span>';
-        } else {
-          feedbackText.innerHTML =
-            '<span style="color:#dc2626;">Skor di bawah 60: Ayo ulangi Eksplorasi dan Materi, lalu kerjakan quiz kembali.</span>';
+            const feedbackText = document.getElementById('feedback-text');
+            if(total >= 80) {
+                feedbackText.innerHTML = '<span style="color:#059669;">Skor 80–100: Sangat baik! Kamu sudah memahami hubungan persamaan, pasangan berurutan, dan grafik.</span>';
+            } else if(total >= 60) {
+                feedbackText.innerHTML = '<span style="color:#d97706;">Skor 60–79: Baik, tetapi pelajari kembali tabel nilai dan penempatan titik.</span>';
+            } else {
+                feedbackText.innerHTML = '<span style="color:#dc2626;">Skor di bawah 60: Ayo ulangi Eksplorasi dan Materi, lalu kerjakan quiz kembali.</span>';
+            }
         }
-      }
 
-      function toggleSolution(id) {
-        const el = document.getElementById(id);
-        if (el.style.display === "block") {
-          el.style.display = "none";
-        } else {
-          el.style.display = "block";
+        function toggleSolution(id) {
+            const el = document.getElementById(id);
+            el.style.display = (el.style.display === 'block') ? 'none' : 'block';
         }
-      }
 
-      const SCRIPT_URL = "URL_GOOGLE_APPS_SCRIPT_ANDA_DI_SINIhttps://script.google.com/macros/s/AKfycbxK52CUJwuvf6YGwycVn2cp9SIBie7HdWX0QuO0Hr9n_MsSEwLAwZprLIQBVJPUDPT2vw/exec";
+        function sendToGoogleSheets() {
+            const nameInput = document.getElementById('studentName').value.trim();
+            const statusMsg = document.getElementById('send-status');
 
-function kirimKeGoogleSheets() {
-    const nama = document.getElementById('nama-siswa').value.trim();
-    const statusText = document.getElementById('status-kirim');
+            if (!nameInput) {
+                alert("Harap isi Nama Lengkap terlebih dahulu sebelum mengirim!");
+                return;
+            }
 
-    if (!nama) {
-        alert("Harap isi Nama Lengkap terlebih dahulu!");
-        return;
-    }
+            if (GOOGLE_SCRIPT_URL === "PASANG_URL_WEB_APP_APPS_SCRIPT_ANDA_DI_SINI") {
+                alert("URL Google Apps Script belum dipasang pada kode JavaScript!");
+                return;
+            }
 
-    // Hitung total skor PG saat ini
-    let totalSkorPG = Object.values(scores).reduce((a, b) => a + b, 0);
+            const totalScore = Object.values(scores).reduce((a, b) => a + b, 0);
+            const choiceSummary = `S1:${userChoices[1]}, S2:${userChoices[2]}, S3:${userChoices[3]}, S4:${userChoices[4]}, S5:${userChoices[5]}`;
+            
+            const payload = {
+                nama: nameInput,
+                skorPG: totalScore,
+                jawabanPgDetails: choiceSummary,
+                uraian6: document.getElementById('essay6').value,
+                uraian7: document.getElementById('essay7').value,
+                uraian8: document.getElementById('essay8').value
+            };
 
-    // Ambil isi text uraian
-    const textareas = document.querySelectorAll('textarea');
-    const u6 = textareas[0] ? textareas[0].value : "";
-    const u7 = textareas[1] ? textareas[1].value : "";
-    const u8 = textareas[2] ? textareas[2].value : "";
+            statusMsg.style.color = "#d97706";
+            statusMsg.innerText = "⏳ Sedang mengirim data ke Google Sheets...";
 
-    statusText.style.color = "#d97706";
-    statusText.innerText = "⏳ Sedang mengirim jawaban...";
-
-    // Data yang dikirimkan dalam format JSON
-    const payload = {
-        nama: nama,
-        skor: totalSkorPG,
-        jawabanUraian6: u6,
-        jawabanUraian7: u7,
-        jawabanUraian8: u8
-    };
-
-    fetch(SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
-    })
-    .then(() => {
-        statusText.style.color = "#059669";
-        statusText.innerText = "✅ Berhasil! Jawaban dan skor telah terkirim ke Google Sheets.";
-    })
-    .catch(error => {
-        statusText.style.color = "#dc2626";
-        statusText.innerText = "❌ Gagal mengirim data. Periksa koneksi internet.";
-        console.error("Error:", error);
-    });
-}
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            })
+            .then(() => {
+                statusMsg.style.color = "#059669";
+                statusMsg.innerText = "✅ Berhasil! Jawaban & skor Anda telah terkirim ke Google Sheets.";
+            })
+            .catch(err => {
+                statusMsg.style.color = "#dc2626";
+                statusMsg.innerText = "❌ Gagal mengirim data. Pastikan koneksi internet stabil.";
+                console.error("Error:", err);
+            });
+        }
     </script>
-  </body>
+</body>
 </html>
