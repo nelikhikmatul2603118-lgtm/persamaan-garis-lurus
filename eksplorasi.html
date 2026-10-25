@@ -1,117 +1,628 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eksplorasi - Persamaan Garis Lurus</title>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Fredoka:wght@500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Halaman Eksplorasi - Persamaan Garis Lurus</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Fredoka:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <style>
-        :root { --bg-color: #f7f9fa; --primary: #20c997; --primary-light: #e6f9f5; --text-main: #2d3748; --text-muted: #718096; }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Quicksand', sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-main); display: flex; min-height: 100vh; }
-        .sidebar { width: 250px; background: #fff; border-right: 1px solid #edf2f7; display: flex; flex-direction: column; padding: 25px 15px; position: fixed; height: 100vh; }
-        .brand { font-family: 'Fredoka', sans-serif; font-size: 20px; color: var(--primary); margin-bottom: 30px; display: flex; align-items: center; gap: 10px; }
-        .nav-menu { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-        .nav-item a { display: flex; align-items: center; gap: 12px; padding: 12px 16px; color: var(--text-muted); text-decoration: none; font-weight: 600; border-radius: 12px; transition: 0.3s; }
-        .nav-item.active a, .nav-item a:hover { background: var(--primary-light); color: var(--primary); }
-        .main-wrapper { margin-left: 250px; flex: 1; padding: 40px; max-width: 1000px; }
-        .card { background: #fff; border-radius: 16px; padding: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); margin-bottom: 25px; }
-        h2, h3 { font-family: 'Fredoka', sans-serif; color: #1a202c; margin-bottom: 15px; }
-        p, li { line-height: 1.6; margin-bottom: 10px; color: var(--text-muted); font-weight: 500; }
-        .scenario-box { background: #fff8f3; border-left: 4px solid #ff8c42; padding: 15px; border-radius: 0 12px 12px 0; margin-bottom: 20px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-        th, td { border: 1px solid #e2e8f0; padding: 12px; text-align: center; }
-        th { background: var(--primary-light); color: var(--primary); font-weight: 700; }
-        .interactive-area { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px; align-items: center; }
-        canvas { background: #fff; border: 2px dashed #cbd5e0; border-radius: 12px; display: block; margin: 0 auto; }
-    </style>
-</head>
-<body>
-    <div class="sidebar">
-        <div class="brand"><i class="fa-solid fa-graduation-cap"><span>Edukasi PGL</span></i></div>
-        <ul class="nav-menu">
-            <li class="nav-item"><a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a></li>
-            <li class="nav-item"><a href="petunjuk.html"><i class="fa-solid fa-circle-info"></i> Petunjuk Web</a></li>
-            <li class="nav-item active"><a href="eksplorasi.html"><i class="fa-solid fa-compass"></i> Eksplorasi</a></li>
-            <li class="nav-item"><a href="materi.html"><i class="fa-solid fa-book-open"></i> Materi</a></li>
-            <li class="nav-item"><a href="quiz.html"><i class="fa-solid fa-pen-to-square"></i> Quiz</a></li>
-        </ul>
-    </div>
-    <div class="main-wrapper">
-        <div class="card">
-            <h2>Eksplorasi: Menemukan Konsep Grafik</h2>
-            <div class="scenario-box">
-                <strong>1. Stimulasi:</strong> Sebuah toko alat tulis menjual satu buku tulis seharga Rp4.000. 
-                1 buku = Rp4.000, 2 buku = Rp8.000, 3 buku = Rp12.000, 4 buku = Rp16.000.
-            </div>
-            
-            <h3>3. Pengumpulan & Pengolahan Data (y = 4x)</h3>
-            <p>Misalkan 
-                x
-                 menyatakan jumlah buku dan 
-                y
-                 total harga dalam ribuan rupiah.</p>
-            
-            <div class="interactive-area">
-                <div>
-                    <table>
-                        <tr><th>Jumlah Buku (x)</th><th>Total Harga (y, ribuan)</th><th>Pasangan (x, y)</th></tr>
-                        <tr><td>1</td><td>4</td><td>(1, 4)</td></tr>
-                        <tr><td>2</td><td>8</td><td>(2, 8)</td></tr>
-                        <tr><td>3</td><td>12</td><td>(3, 12)</td></tr>
-                        <tr><td>4</td><td>16</td><td>(4, 16)</td></tr>
-                        <tr><td>5</td><td>20</td><td>(5, 20)</td></tr>
-                    </table>
-                </div>
-                <div>
-                    <canvas id="plotCanvas" width="260" height="260"></canvas>
-                </div>
-            </div>
-        </div>
+      :root {
+        --bg-color: #f7f9fa;
+        --primary: #20c997;
+        --primary-light: #e6f9f5;
+        --accent-orange: #ff8c42;
+        --accent-orange-light: #fff3eb;
+        --accent-purple: #818cf8;
+        --accent-purple-light: #e0e7ff;
+        --text-main: #2d3748;
+        --text-muted: #718096;
+        --card-radius: 16px;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Quicksand", sans-serif;
+      }
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        display: flex;
+        min-height: 100vh;
+      }
 
-        <div class="card">
-            <h3>6. Generalisasi (Kesimpulan)</h3>
-            <p>• Persamaan merupakan pernyataan matematika yang memuat tanda <strong>sama dengan (=)</strong>.</p>
-            <p>• Pasangan berurutan 
-                (x, y)
-                 menunjukkan <strong>koordinat titik pada bidang Kartesius</strong>.</p>
-            <p>• Grafik persamaan diperoleh dengan cara <strong>memetakan titik-titik koordinat pasangan berurutan</strong>.</p>
-            <p>• Pada contoh 
-                y = 4x
-                , titik-titik yang memenuhi persamaan membentuk <strong>suatu garis lurus</strong>.</p>
+      /* Sidebar Navigation */
+      .sidebar {
+        width: 250px;
+        background: #fff;
+        border-right: 1px solid #edf2f7;
+        display: flex;
+        flex-direction: column;
+        padding: 25px 15px;
+        position: fixed;
+        height: 100vh;
+        z-index: 100;
+      }
+      .brand {
+        font-family: "Fredoka", sans-serif;
+        font-size: 20px;
+        color: var(--primary);
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-left: 10px;
+      }
+      .nav-menu {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .nav-item a {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        color: var(--text-muted);
+        text-decoration: none;
+        font-weight: 600;
+        border-radius: 12px;
+        transition: 0.3s;
+      }
+      .nav-item.active a,
+      .nav-item a:hover {
+        background: var(--primary-light);
+        color: var(--primary);
+      }
+
+      /* Main Container */
+      .main-wrapper {
+        margin-left: 250px;
+        flex: 1;
+        padding: 40px;
+        max-width: 1050px;
+      }
+      .card {
+        background: #fff;
+        border-radius: var(--card-radius);
+        padding: 30px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        margin-bottom: 25px;
+        border: 1px solid #edf2f7;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Fredoka", sans-serif;
+        color: #1a202c;
+        margin-bottom: 15px;
+      }
+      p,
+      li {
+        line-height: 1.6;
+        color: var(--text-muted);
+        font-size: 15px;
+        margin-bottom: 10px;
+      }
+      ul,
+      ol {
+        margin-left: 20px;
+      }
+
+      .section-tag {
+        display: inline-block;
+        background: var(--primary-light);
+        color: var(--primary);
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 13px;
+        margin-bottom: 10px;
+      }
+      .highlight-box {
+        background: var(--accent-orange-light);
+        border-left: 4px solid var(--accent-orange);
+        padding: 15px 20px;
+        border-radius: 0 12px 12px 0;
+        margin: 15px 0;
+      }
+      .highlight-box h4 {
+        color: var(--accent-orange);
+        font-family: "Fredoka", sans-serif;
+        margin-bottom: 5px;
+      }
+
+      /* Table & Interactive Grid */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 15px 0;
+      }
+      th,
+      td {
+        border: 1px solid #e2e8f0;
+        padding: 12px 15px;
+        text-align: left;
+      }
+      th {
+        background: var(--primary-light);
+        color: var(--primary);
+        font-weight: 700;
+      }
+
+      .interactive-area {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+        margin-top: 15px;
+        align-items: start;
+      }
+      .input-panel {
+        background: #f8fafc;
+        padding: 20px;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+      }
+      .form-group {
+        margin-bottom: 12px;
+      }
+      .form-group label {
+        display: block;
+        font-weight: 700;
+        font-size: 13px;
+        margin-bottom: 5px;
+      }
+      .form-group input {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #cbd5e0;
+        border-radius: 8px;
+        font-size: 14px;
+      }
+      .btn-action {
+        width: 100%;
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 8px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 5px;
+      }
+      .btn-action:hover {
+        opacity: 0.9;
+      }
+
+      canvas {
+        background: #ffffff;
+        border: 2px dashed #cbd5e0;
+        border-radius: 12px;
+        display: block;
+        margin: 0 auto;
+      }
+
+      .input-fill {
+        width: 120px;
+        padding: 4px 8px;
+        border: 1px solid #cbd5e0;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+      <div class="brand">
+        <i class="fa-solid fa-graduation-cap"></i> <span>Edukasi PGL</span>
+      </div>
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="index.html"
+            ><i class="fa-solid fa-house"></i> <span>Beranda</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="petunjuk.html"
+            ><i class="fa-solid fa-circle-info"></i>
+            <span>Petunjuk Web</span></a
+          >
+        </li>
+        <li class="nav-item active">
+          <a href="eksplorasi.html"
+            ><i class="fa-solid fa-compass"></i> <span>Eksplorasi</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="materi.html"
+            ><i class="fa-solid fa-book-open"></i> <span>Materi</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="quiz.html"
+            ><i class="fa-solid fa-pen-to-square"></i> <span>Quiz</span></a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+      <h1>Isi Halaman Eksplorasi</h1>
+      <p style="margin-bottom: 25px">
+        Ikuti 6 langkah penemuan konsep berikut secara berurutan.
+      </p>
+
+      <!-- 1. Stimulasi -->
+      <div class="card">
+        <span class="section-tag">Tahap 1</span>
+        <h2>1. Stimulasi (Pemberian Rangsangan)</h2>
+        <div class="highlight-box">
+          <h4>Masalah:</h4>
+          <p>
+            Sebuah toko alat tulis menjual satu buku tulis seharga Rp4.000. Jika
+            seseorang membeli beberapa buku dengan harga yang sama dan tidak ada
+            biaya tambahan, bagaimana hubungan antara jumlah buku dan total
+            harga?
+          </p>
         </div>
+        <p><strong>Amati contoh berikut:</strong></p>
+        <ul>
+          <li>1 buku = Rp4.000</li>
+          <li>2 buku = Rp8.000</li>
+          <li>3 buku = Rp12.000</li>
+          <li>4 buku = Rp16.000</li>
+        </ul>
+        <div
+          style="
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+          "
+        >
+          <p>
+            <strong>Pertanyaan pemantik:</strong> Informasi apa yang berubah?
+            Informasi apa yang bergantung pada jumlah buku? Bagaimana cara
+            menampilkan hubungan tersebut agar lebih mudah dibaca?
+          </p>
+        </div>
+      </div>
+
+      <!-- 2. Identifikasi Masalah -->
+      <div class="card">
+        <span class="section-tag">Tahap 2</span>
+        <h2>2. Identifikasi Masalah</h2>
+        <p>
+          <strong>Tuliskan pertanyaan yang ingin kamu selidiki:</strong>
+        </p>
+        <ol>
+          <li>
+            Bagaimana menyatakan jumlah buku dan total harga menggunakan simbol?
+          </li>
+          <li>Bagaimana menyajikan hubungan tersebut dalam tabel?</li>
+          <li>
+            Jika titik-titik dari tabel digambar pada bidang koordinat, bentuk
+            apa yang mungkin terbentuk?
+          </li>
+        </ol>
+      </div>
+
+      <!-- 3. Pengumpulan Data -->
+      <div class="card">
+        <span class="section-tag">Tahap 3</span>
+        <h2>3. Pengumpulan Data</h2>
+        <p>
+          Misalkan x menyatakan jumlah buku dan y menyatakan total harga dalam
+          ribuan rupiah. Eksplorasi grafik berikut.
+        </p>
+
+        <div class="interactive-area">
+          <div class="input-panel">
+            <p style="font-weight: 700; margin-bottom: 10px">
+              Tabel Data (y dalam ribuan rupiah):
+            </p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Jumlah buku (x)</th>
+                  <th>Total harga (y), ribuan rupiah</th>
+                  <th>Pasangan berurutan (x, y)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>4</td>
+                  <td>(1, 4)</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>8</td>
+                  <td>(2, 8)</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>12</td>
+                  <td>(3, 12)</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>16</td>
+                  <td>(4, 16)</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>
+                    <input
+                      type="number"
+                      id="fill-y"
+                      class="input-fill"
+                      placeholder="y = ..."
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      id="fill-pair"
+                      class="input-fill"
+                      placeholder="(x, y)"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <button class="btn-action" onclick="checkDataFill()">
+              Periksa & Plot Ke Grafik
+            </button>
+            <p
+              id="fill-feedback"
+              style="margin-top: 10px; font-weight: 700; font-size: 13px"
+            ></p>
+            <p style="font-size: 12px; margin-top: 5px">
+              <em
+                >Petunjuk: gunakan pola pada data untuk melengkapi baris
+                terakhir. Perhatikan bahwa y dinyatakan dalam ribuan rupiah.</em
+              >
+            </p>
+          </div>
+
+          <div>
+            <p style="text-align: center; font-weight: 700; margin-bottom: 8px">
+              Visualisasi Grafik Koordinat Kartesius
+            </p>
+            <canvas id="canvasEksplorasi" width="320" height="320"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Pengolahan Data -->
+      <div class="card">
+        <span class="section-tag">Tahap 4</span>
+        <h2>4. Pengolahan Data</h2>
+        <ul>
+          <li>Tuliskan aturan yang menghubungkan x dan y.</li>
+          <li>
+            Nyatakan aturan itu dengan persamaan: <strong>y = 4x</strong>.
+          </li>
+          <li>Tentukan pasangan berurutan untuk x = 0, 1, 2, 3, dan 4.</li>
+          <li>
+            Gambarkan pasangan berurutan tersebut pada bidang koordinat. Gunakan
+            sumbu mendatar untuk x dan sumbu tegak untuk y.
+          </li>
+          <li>
+            Amati apakah titik-titik tersebut berada pada satu garis yang sama.
+          </li>
+        </ul>
+      </div>
+
+      <!-- 5. Verifikasi -->
+      <div class="card">
+        <span class="section-tag">Tahap 5</span>
+        <h2>5. Verifikasi (Pemeriksaan)</h2>
+        <div
+          style="
+            background: var(--accent-purple-light);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+          "
+        >
+          <p style="color: #3730a3">
+            <strong>Periksa pasangan (3, 12):</strong> Jika x = 3 dimasukkan ke
+            persamaan y = 4x, diperoleh y = 4 &times; 3 = 12. Jadi, pasangan (3,
+            12) memenuhi persamaan.
+          </p>
+        </div>
+        <div
+          style="
+            background: #fee2e2;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+          "
+        >
+          <p style="color: #991b1b">
+            <strong>Periksa pula pasangan (3, 10):</strong> Karena 10 tidak sama
+            dengan 4 &times; 3, pasangan tersebut tidak memenuhi persamaan.
+          </p>
+        </div>
+        <p>
+          <strong>Pertanyaan verifikasi:</strong> Apakah setiap pasangan yang
+          memenuhi persamaan menghasilkan titik pada grafik? Apa yang terjadi
+          jika nilai x diganti?
+        </p>
+      </div>
+
+      <!-- 6. Generalisasi -->
+      <div class="card">
+        <span class="section-tag">Tahap 6</span>
+        <h2>6. Generalisasi (Menarik Kesimpulan)</h2>
+        <p>Lengkapi kalimat berikut dengan hasil pengamatanmu:</p>
+        <ol style="margin-bottom: 20px">
+          <li>
+            Persamaan merupakan pernyataan matematika yang memuat tanda
+            <input type="text" class="input-fill" id="g1" placeholder="..." />.
+          </li>
+          <li>
+            Pasangan berurutan (x, y) menunjukkan
+            <input
+              type="text"
+              class="input-fill"
+              id="g2"
+              placeholder="..."
+              style="width: 200px"
+            />.
+          </li>
+          <li>
+            Grafik persamaan diperoleh dengan cara
+            <input
+              type="text"
+              class="input-fill"
+              id="g3"
+              placeholder="..."
+              style="width: 200px"
+            />.
+          </li>
+          <li>
+            Pada contoh y = 4x, titik-titik yang memenuhi persamaan membentuk
+            <input
+              type="text"
+              class="input-fill"
+              id="g4"
+              placeholder="..."
+              style="width: 150px"
+            />.
+          </li>
+        </ol>
+        <button
+          class="btn-action"
+          style="max-width: 200px"
+          onclick="showGeneralization()"
+        >
+          Tampilkan Kesimpulan
+        </button>
+
+        <div
+          id="conclusion-box"
+          class="highlight-box"
+          style="display: none; margin-top: 20px"
+        >
+          <h4>Kesimpulan yang diharapkan:</h4>
+          <p>
+            Persamaan linear dapat menyatakan hubungan dua variabel. Nilai yang
+            memenuhi persamaan dapat ditulis sebagai pasangan berurutan,
+            kemudian digambarkan sebagai titik pada bidang koordinat. Untuk
+            contoh persamaan linear sederhana, titik-titiknya terletak pada satu
+            garis lurus.
+          </p>
+        </div>
+      </div>
     </div>
 
     <script>
-        const canvas = document.getElementById('plotCanvas');
-        const ctx = canvas.getContext('2d');
-        function draw() {
-            ctx.clearRect(0, 0, 260, 260);
-            ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
-            for(let i=0; i<=260; i+=40) {
-                ctx.beginPath(); ctx.moveTo(i,0); ctx.lineTo(i,260); ctx.stroke();
-                ctx.beginPath(); ctx.moveTo(0,i); ctx.lineTo(260,i); ctx.stroke();
-            }
-            // Axis
-            ctx.strokeStyle = '#4a5568'; ctx.lineWidth = 2;
-            ctx.beginPath(); ctx.moveTo(20, 240); ctx.lineTo(240, 240); ctx.stroke();
-            ctx.beginPath(); ctx.moveTo(20, 20); ctx.lineTo(20, 240); ctx.stroke();
+      const canvas = document.getElementById("canvasEksplorasi");
+      const ctx = canvas.getContext("2d");
 
-            // Points & Line y = 4x (scaled)
-            const pts = [[1,4], [2,8], [3,12], [4,16], [5,20]];
-            ctx.strokeStyle = '#20c997'; ctx.lineWidth = 2;
-            ctx.beginPath();
-            pts.forEach((p, index) => {
-                let px = 20 + p[0] * 35;
-                let py = 240 - (p[1] * 10);
-                if(index === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
-                ctx.fillStyle = '#ff8c42';
-                ctx.beginPath(); ctx.arc(px, py, 4, 0, Math.PI*2); ctx.fill();
-            });
-            ctx.stroke();
+      function drawCartesian(includeFive = false) {
+        ctx.clearRect(0, 0, 320, 320);
+        const scale = 14;
+        const ox = 30;
+        const oy = 290;
+
+        // Grid
+        ctx.strokeStyle = "#f1f5f9";
+        ctx.lineWidth = 1;
+        for (let x = 0; x < 320; x += scale) {
+          ctx.beginPath();
+          ctx.moveTo(x, 0);
+          ctx.lineTo(x, 320);
+          ctx.stroke();
         }
-        draw();
+        for (let y = 0; y < 320; y += scale) {
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(320, y);
+          ctx.stroke();
+        }
+
+        // Axes
+        ctx.strokeStyle = "#334155";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(ox, 0);
+        ctx.lineTo(ox, 320);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(0, oy);
+        ctx.lineTo(320, oy);
+        ctx.stroke();
+
+        // Line & Points for y = 4x
+        const pts = [
+          [1, 4],
+          [2, 8],
+          [3, 12],
+          [4, 16],
+        ];
+        if (includeFive) pts.push([5, 20]);
+
+        ctx.strokeStyle = "#20c997";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        pts.forEach((p, i) => {
+          let px = ox + p[0] * 35;
+          let py = oy - p[1] * 12;
+          if (i === 0) ctx.moveTo(px, py);
+          else ctx.lineTo(px, py);
+        });
+        ctx.stroke();
+
+        pts.forEach((p) => {
+          let px = ox + p[0] * 35;
+          let py = oy - p[1] * 12;
+          ctx.fillStyle = "#ff8c42";
+          ctx.beginPath();
+          ctx.arc(px, py, 5, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      }
+
+      function checkDataFill() {
+        const yVal = document.getElementById("fill-y").value.trim();
+        const pairVal = document
+          .getElementById("fill-pair")
+          .value.trim()
+          .replace(/\s+/g, "");
+        const feedback = document.getElementById("fill-feedback");
+
+        if (yVal === "20" && (pairVal === "(5,20)" || pairVal === "5,20")) {
+          feedback.style.color = "#20c997";
+          feedback.innerText =
+            "✨ Tepat sekali! y = 20 dan Pasangan = (5, 20). Titik (5,20) ditambahkan ke grafik!";
+          drawCartesian(true);
+        } else {
+          feedback.style.color = "#f87171";
+          feedback.innerText =
+            "❌ Jawaban belum sesuai. Ingat y = 4x, jadi untuk x = 5, y = 4(5) = 20.";
+        }
+      }
+
+      function showGeneralization() {
+        document.getElementById("conclusion-box").style.display = "block";
+      }
+
+      drawCartesian(false);
     </script>
-</body>
+  </body>
 </html>

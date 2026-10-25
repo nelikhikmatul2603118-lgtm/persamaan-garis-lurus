@@ -1,71 +1,294 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Materi - Persamaan Garis Lurus</title>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Fredoka:wght@500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Halaman Materi - Persamaan Garis Lurus</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Fredoka:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <style>
-        :root { --bg-color: #f7f9fa; --primary: #20c997; --primary-light: #e6f9f5; --text-main: #2d3748; --text-muted: #718096; }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Quicksand', sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-main); display: flex; min-height: 100vh; }
-        .sidebar { width: 250px; background: #fff; border-right: 1px solid #edf2f7; display: flex; flex-direction: column; padding: 25px 15px; position: fixed; height: 100vh; }
-        .brand { font-family: 'Fredoka', sans-serif; font-size: 20px; color: var(--primary); margin-bottom: 30px; display: flex; align-items: center; gap: 10px; }
-        .nav-menu { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-        .nav-item a { display: flex; align-items: center; gap: 12px; padding: 12px 16px; color: var(--text-muted); text-decoration: none; font-weight: 600; border-radius: 12px; transition: 0.3s; }
-        .nav-item.active a, .nav-item a:hover { background: var(--primary-light); color: var(--primary); }
-        .main-wrapper { margin-left: 250px; flex: 1; padding: 40px; max-width: 1000px; }
-        .card { background: #fff; border-radius: 16px; padding: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); margin-bottom: 25px; }
-        h2, h3 { font-family: 'Fredoka', sans-serif; color: #1a202c; margin-bottom: 15px; }
-        p, li { line-height: 1.6; margin-bottom: 10px; color: var(--text-muted); font-weight: 500; }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-        th, td { border: 1px solid #e2e8f0; padding: 12px; text-align: left; }
-        th { background: var(--primary-light); color: var(--primary); font-weight: 700; }
-        ol { margin-left: 20px; display: flex; flex-direction: column; gap: 8px; color: var(--text-muted); font-weight: 500; }
-    </style>
-</head>
-<body>
-    <div class="sidebar">
-        <div class="brand"><i class="fa-solid fa-graduation-cap"><span>Edukasi PGL</span></i></div>
-        <ul class="nav-menu">
-            <li class="nav-item"><a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a></li>
-            <li class="nav-item"><a href="petunjuk.html"><i class="fa-solid fa-circle-info"></i> Petunjuk Web</a></li>
-            <li class="nav-item"><a href="eksplorasi.html"><i class="fa-solid fa-compass"></i> Eksplorasi</a></li>
-            <li class="nav-item active"><a href="materi.html"><i class="fa-solid fa-book-open"></i> Materi</a></li>
-            <li class="nav-item"><a href="quiz.html"><i class="fa-solid fa-pen-to-square"></i> Quiz</a></li>
-        </ul>
-    </div>
-    <div class="main-wrapper">
-        <div class="card">
-            <h2>Materi: Konsep Persamaan Garis Lurus</h2>
-            <h3>1. Apa itu persamaan garis lurus?</h3>
-            <p>Persamaan garis lurus adalah persamaan yang menggambarkan hubungan antara dua variabel dan grafiknya berupa garis lurus pada bidang koordinat. Pada tahap ini, fokus pembelajaran adalah memahami persamaan, pasangan nilai, dan cara menggambar grafik tanpa membahas gradien.</p>
-            
-            <h3>2. Mengenal variabel x dan y</h3>
-            <p>Variabel adalah simbol yang mewakili nilai yang dapat berubah. Dalam pasangan (x, y), x merupakan koordinat mendatar dan y koordinat tegak.</p>
-            
-            <h3>3. Contoh Persamaan Linear Sederhana (y = 2x + 1)</h3>
-            <table>
-                <tr><th>x</th><th>Perhitungan y = 2x + 1</th><th>Pasangan (x, y)</th></tr>
-                <tr><td>-1</td><td>y = 2(-1) + 1 = -1</td><td>(-1, -1)</td></tr>
-                <tr><td>0</td><td>y = 2(0) + 1 = 1</td><td>(0, 1)</td></tr>
-                <tr><td>1</td><td>y = 2(1) + 1 = 3</td><td>(1, 3)</td></tr>
-                <tr><td>2</td><td>y = 2(2) + 1 = 5</td><td>(2, 5)</td></tr>
-            </table>
-        </div>
+      :root {
+        --bg-color: #f7f9fa;
+        --primary: #20c997;
+        --primary-light: #e6f9f5;
+        --accent-purple: #818cf8;
+        --accent-purple-light: #e0e7ff;
+        --text-main: #2d3748;
+        --text-muted: #718096;
+        --card-radius: 16px;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Quicksand", sans-serif;
+      }
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        display: flex;
+        min-height: 100vh;
+      }
 
-        <div class="card">
-            <h3>4. Cara Menggambar Grafik Persamaan</h3>
-            <ol>
-                <li>Buat bidang koordinat Kartesius yang terdiri atas sumbu-x mendatar dan sumbu-y tegak.</li>
-                <li>Tentukan beberapa nilai x yang mudah dihitung.</li>
-                <li>Substitusikan setiap nilai x ke persamaan untuk memperoleh y.</li>
-                <li>Tuliskan hasilnya dalam tabel dan pasangan berurutan.</li>
-                <li>Letakkan setiap pasangan berurutan sebagai titik pada bidang koordinat.</li>
-                <li>Hubungkan titik-titik tersebut dengan garis lurus.</li>
-            </ol>
-        </div>
+      .sidebar {
+        width: 250px;
+        background: #fff;
+        border-right: 1px solid #edf2f7;
+        display: flex;
+        flex-direction: column;
+        padding: 25px 15px;
+        position: fixed;
+        height: 100vh;
+        z-index: 100;
+      }
+      .brand {
+        font-family: "Fredoka", sans-serif;
+        font-size: 20px;
+        color: var(--primary);
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-left: 10px;
+      }
+      .nav-menu {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .nav-item a {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        color: var(--text-muted);
+        text-decoration: none;
+        font-weight: 600;
+        border-radius: 12px;
+        transition: 0.3s;
+      }
+      .nav-item.active a,
+      .nav-item a:hover {
+        background: var(--primary-light);
+        color: var(--primary);
+      }
+
+      .main-wrapper {
+        margin-left: 250px;
+        flex: 1;
+        padding: 40px;
+        max-width: 1050px;
+      }
+      .card {
+        background: #fff;
+        border-radius: var(--card-radius);
+        padding: 30px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        margin-bottom: 25px;
+        border: 1px solid #edf2f7;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Fredoka", sans-serif;
+        color: #1a202c;
+        margin-bottom: 15px;
+      }
+      p,
+      li {
+        line-height: 1.6;
+        color: var(--text-muted);
+        font-size: 15px;
+        margin-bottom: 10px;
+      }
+      ol {
+        margin-left: 20px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 15px 0;
+      }
+      th,
+      td {
+        border: 1px solid #e2e8f0;
+        padding: 12px 15px;
+        text-align: left;
+      }
+      th {
+        background: var(--primary-light);
+        color: var(--primary);
+        font-weight: 700;
+      }
+
+      .note-box {
+        background: var(--accent-purple-light);
+        border-left: 4px solid var(--accent-purple);
+        padding: 15px 20px;
+        border-radius: 0 12px 12px 0;
+        margin: 15px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="brand">
+        <i class="fa-solid fa-graduation-cap"></i> <span>Edukasi PGL</span>
+      </div>
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="index.html"
+            ><i class="fa-solid fa-house"></i> <span>Beranda</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="petunjuk.html"
+            ><i class="fa-solid fa-circle-info"></i>
+            <span>Petunjuk Web</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="eksplorasi.html"
+            ><i class="fa-solid fa-compass"></i> <span>Eksplorasi</span></a
+          >
+        </li>
+        <li class="nav-item active">
+          <a href="materi.html"
+            ><i class="fa-solid fa-book-open"></i> <span>Materi</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="quiz.html"
+            ><i class="fa-solid fa-pen-to-square"></i> <span>Quiz</span></a
+          >
+        </li>
+      </ul>
     </div>
-</body>
+
+    <div class="main-wrapper">
+      <h1>Isi Halaman Materi</h1>
+      <p style="margin-bottom: 25px">
+        Pelajari konsep dasar persamaan garis lurus di bawah ini.
+      </p>
+
+      <!-- 1. Apa itu persamaan garis lurus? -->
+      <div class="card">
+        <h2>1. Apa itu persamaan garis lurus?</h2>
+        <p>
+          Persamaan garis lurus adalah persamaan yang menggambarkan hubungan
+          antara dua variabel dan grafiknya berupa garis lurus pada bidang
+          koordinat. Pada tahap ini, fokus pembelajaran adalah memahami
+          persamaan, pasangan nilai, dan cara menggambar grafik. Konsep gradien
+          belum dibahas.
+        </p>
+      </div>
+
+      <!-- 2. Mengenal variabel x dan y -->
+      <div class="card">
+        <h2>2. Mengenal variabel x dan y</h2>
+        <p>
+          Variabel adalah simbol yang mewakili nilai yang dapat berubah. Dalam
+          pasangan (x, y), x merupakan koordinat mendatar dan y merupakan
+          koordinat tegak. Nilai x dan y harus memenuhi persamaan yang sedang
+          dipelajari.
+        </p>
+      </div>
+
+      <!-- 3. Contoh persamaan linear sederhana -->
+      <div class="card">
+        <h2>3. Contoh persamaan linear sederhana</h2>
+        <p>
+          <strong>Contoh:</strong> y = 2x + 1. Untuk mendapatkan pasangan
+          berurutan, pilih nilai x, lalu masukkan ke persamaan untuk memperoleh
+          y.
+        </p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>x</th>
+              <th>Perhitungan y = 2x + 1</th>
+              <th>Pasangan (x, y)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>-1</td>
+              <td>y = 2(-1) + 1 = -1</td>
+              <td>(-1, -1)</td>
+            </tr>
+            <tr>
+              <td>0</td>
+              <td>y = 2(0) + 1 = 1</td>
+              <td>(0, 1)</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>y = 2(1) + 1 = 3</td>
+              <td>(1, 3)</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>y = 2(2) + 1 = 5</td>
+              <td>(2, 5)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 4. Cara menggambar grafik persamaan -->
+      <div class="card">
+        <h2>4. Cara menggambar grafik persamaan</h2>
+        <ol>
+          <li>
+            Buat bidang koordinat Kartesius yang terdiri atas sumbu-x mendatar
+            dan sumbu-y tegak.
+          </li>
+          <li>Tentukan beberapa nilai x yang mudah dihitung.</li>
+          <li>Substitusikan setiap nilai x ke persamaan untuk memperoleh y.</li>
+          <li>Tuliskan hasilnya dalam tabel dan pasangan berurutan.</li>
+          <li>
+            Letakkan setiap pasangan berurutan sebagai titik pada bidang
+            koordinat.
+          </li>
+          <li>
+            Hubungkan titik-titik tersebut dengan garis lurus jika titik-titik
+            menunjukkan pola garis lurus.
+          </li>
+        </ol>
+      </div>
+
+      <!-- 5. Contoh penyelesaian -->
+      <div class="card">
+        <h2>5. Contoh penyelesaian</h2>
+        <p>
+          <strong
+            >Gambarkan grafik y = x + 2 untuk x = -2, -1, 0, 1, dan 2.</strong
+          >
+        </p>
+        <ul>
+          <li>Jika x = -2, maka y = -2 + 2 = 0, sehingga titiknya (-2, 0).</li>
+          <li>Jika x = -1, maka y = -1 + 2 = 1, sehingga titiknya (-1, 1).</li>
+          <li>Jika x = 0, maka y = 0 + 2 = 2, sehingga titiknya (0, 2).</li>
+          <li>Jika x = 1, maka y = 1 + 2 = 3, sehingga titiknya (1, 3).</li>
+          <li>Jika x = 2, maka y = 2 + 2 = 4, sehingga titiknya (2, 4).</li>
+        </ul>
+        <div class="note-box">
+          <p>
+            Plot kelima titik pada bidang koordinat, kemudian hubungkan secara
+            berurutan dengan garis lurus. Grafik membantu kita melihat hubungan
+            nilai x dan y secara visual.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
