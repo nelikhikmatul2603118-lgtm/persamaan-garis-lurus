@@ -448,6 +448,20 @@
           hasil belajar Anda.
         </p>
       </div>
+
+      <!-- Tambahkan Input Nama & Tombol Submit di bagian bawah quiz.html -->
+<div class="card" style="margin-top: 20px;">
+    <h2>Pengiriman Hasil Quiz</h2>
+    <div style="margin-bottom: 15px;">
+        <label style="font-weight: 700; display: block; margin-bottom: 5px;">Nama Lengkap Siswa:</label>
+        <input type="text" id="nama-siswa" placeholder="Masukkan nama kamu..." style="width: 100%; padding: 10px; border: 1px solid #cbd5e0; border-radius: 8px;">
+    </div>
+    
+    <button onclick="kirimKeGoogleSheets()" style="background: #20c997; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 700; cursor: pointer;">
+        🚀 Kirim Jawaban ke Google Sheets
+    </button>
+    <p id="status-kirim" style="margin-top: 10px; font-weight: 700;"></p>
+</div>
     </div>
 
     <script>
@@ -498,6 +512,57 @@
           el.style.display = "block";
         }
       }
+
+      const SCRIPT_URL = "URL_GOOGLE_APPS_SCRIPT_ANDA_DI_SINIhttps://script.google.com/macros/s/AKfycbxK52CUJwuvf6YGwycVn2cp9SIBie7HdWX0QuO0Hr9n_MsSEwLAwZprLIQBVJPUDPT2vw/exec";
+
+function kirimKeGoogleSheets() {
+    const nama = document.getElementById('nama-siswa').value.trim();
+    const statusText = document.getElementById('status-kirim');
+
+    if (!nama) {
+        alert("Harap isi Nama Lengkap terlebih dahulu!");
+        return;
+    }
+
+    // Hitung total skor PG saat ini
+    let totalSkorPG = Object.values(scores).reduce((a, b) => a + b, 0);
+
+    // Ambil isi text uraian
+    const textareas = document.querySelectorAll('textarea');
+    const u6 = textareas[0] ? textareas[0].value : "";
+    const u7 = textareas[1] ? textareas[1].value : "";
+    const u8 = textareas[2] ? textareas[2].value : "";
+
+    statusText.style.color = "#d97706";
+    statusText.innerText = "⏳ Sedang mengirim jawaban...";
+
+    // Data yang dikirimkan dalam format JSON
+    const payload = {
+        nama: nama,
+        skor: totalSkorPG,
+        jawabanUraian6: u6,
+        jawabanUraian7: u7,
+        jawabanUraian8: u8
+    };
+
+    fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(() => {
+        statusText.style.color = "#059669";
+        statusText.innerText = "✅ Berhasil! Jawaban dan skor telah terkirim ke Google Sheets.";
+    })
+    .catch(error => {
+        statusText.style.color = "#dc2626";
+        statusText.innerText = "❌ Gagal mengirim data. Periksa koneksi internet.";
+        console.error("Error:", error);
+    });
+}
     </script>
   </body>
 </html>
