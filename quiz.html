@@ -239,6 +239,57 @@
         .btn-submit-sheets:hover {
             opacity: 0.9;
         }
+        @media (max-width: 768px) {
+            body {
+                display: block;
+            }
+            .sidebar {
+                position: static;
+                width: 100%;
+                height: auto;
+                padding: 16px;
+                border-right: 0;
+                border-bottom: 1px solid #edf2f7;
+            }
+            .brand {
+                margin-bottom: 14px;
+            }
+            .nav-menu {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+            .nav-item a {
+                padding: 10px 12px;
+                gap: 8px;
+                font-size: 14px;
+            }
+            .main-wrapper {
+                width: 100%;
+                max-width: none;
+                min-width: 0;
+                margin-left: 0;
+                padding: 24px 16px;
+            }
+            .card {
+                padding: 22px;
+            }
+        }
+        @media (max-width: 480px) {
+            .nav-item a {
+                padding: 9px 10px;
+                font-size: 13px;
+            }
+            .main-wrapper {
+                padding: 20px 12px;
+            }
+            .card {
+                padding: 18px;
+            }
+            h1 {
+                font-size: 28px;
+            }
+        }
     </style>
 </head>
 
@@ -425,11 +476,6 @@
             } else {
                 feedbackText.innerHTML = '<span style="color:#dc2626;">Skor di bawah 60: Ayo ulangi Eksplorasi dan Materi, lalu kerjakan quiz kembali.</span>';
             }
-        }
-
-        function toggleSolution(id) {
-            const el = document.getElementById(id);
-            el.style.display = (el.style.display === 'block') ? 'none' : 'block';
         }
 
         function sendToGoogleSheets() {

@@ -111,6 +111,50 @@
         color: var(--primary);
         margin-top: 3px;
       }
+      @media (max-width: 768px) {
+        body {
+          display: block;
+        }
+        .sidebar {
+          position: static;
+          width: 100%;
+          height: auto;
+          padding: 16px;
+          border-right: 0;
+          border-bottom: 1px solid #edf2f7;
+        }
+        .brand {
+          margin-bottom: 14px;
+        }
+        .nav-menu {
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 6px;
+        }
+        .nav-item a {
+          padding: 10px 12px;
+          gap: 8px;
+          font-size: 14px;
+        }
+        .main-wrapper {
+          width: 100%;
+          max-width: none;
+          margin-left: 0;
+          padding: 24px 16px;
+        }
+      }
+      @media (max-width: 480px) {
+        .nav-item a {
+          padding: 9px 10px;
+          font-size: 13px;
+        }
+        .content-box {
+          padding: 20px;
+        }
+        h2 {
+          font-size: 21px;
+        }
+      }
     </style>
   </head>
   <body>

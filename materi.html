@@ -136,6 +136,62 @@
         border-radius: 0 12px 12px 0;
         margin: 15px 0;
       }
+      @media (max-width: 768px) {
+        body {
+          display: block;
+        }
+        .sidebar {
+          position: static;
+          width: 100%;
+          height: auto;
+          padding: 16px;
+          border-right: 0;
+          border-bottom: 1px solid #edf2f7;
+        }
+        .brand {
+          margin-bottom: 14px;
+        }
+        .nav-menu {
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 6px;
+        }
+        .nav-item a {
+          padding: 10px 12px;
+          gap: 8px;
+          font-size: 14px;
+        }
+        .main-wrapper {
+          width: 100%;
+          max-width: none;
+          min-width: 0;
+          margin-left: 0;
+          padding: 24px 16px;
+        }
+        .card {
+          padding: 22px;
+        }
+        table {
+          display: block;
+          max-width: 100%;
+          overflow-x: auto;
+        }
+      }
+      @media (max-width: 480px) {
+        .nav-item a {
+          padding: 9px 10px;
+          font-size: 13px;
+        }
+        .main-wrapper {
+          padding: 20px 12px;
+        }
+        .card {
+          padding: 18px;
+        }
+        h1 {
+          font-size: 28px;
+        }
+      }
     </style>
   </head>
   <body>
